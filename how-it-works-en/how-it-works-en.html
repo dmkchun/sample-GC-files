@@ -1,0 +1,580 @@
+﻿<style>
+    h3 {
+        margin: 10px 0;
+    }
+
+    th {
+        font-weight: bold;
+        color: white;
+        background-color: #A29B73;
+        text-align: center;
+        border-bottom: 4px solid white;
+        padding: 8px 0;
+    }
+
+    td {
+        padding: 4px 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-style: hidden;
+    }
+
+        table th, table td {
+            border-right: 2px solid white;
+            border-top: 2px solid white;
+        }
+
+    .mo-history-cs {
+        position: absolute;
+        text-align: center;
+        width: 550px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        top: 0;
+        z-index: 10;
+    }
+
+    .mo-history-cs-text {
+        color: white;
+        font-size: 2em;
+        margin: auto;
+    }
+
+    .flex {
+        display: -webkit-box; /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+        display: -moz-box; /* OLD: Firefox (buggy) */
+        display: -ms-flexbox; /* MID: IE 10 */
+        display: -webkit-flex; /* NEW, Chrome 21+ */
+        display: flex; /* NEW: Opera 12.1, Firefox 22+ */
+        -webkit-box-align: center;
+        -moz-box-align: center; /* OLD… */
+        -ms-flex-align: center; /* You know the drill now… */
+        -webkit-align-items: center;
+        align-items: center;
+    }
+</style>
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="text-color black container">
+    <div class="col-xs-12 text-right">
+        <a href="#/how-it-works">日本語</a>
+    </div>
+    <div class="row hidden-sm hidden-xs">
+
+        <div class="row col-xs-12 text-center">
+            <h1><b>HOW TO PLAY</b></h1>
+            <hr />
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 1</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Login</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 2</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Select 7 numbers &amp; click PLAY</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 3</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Select a sponsor banner that most interests you</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 4</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Browse sponsor page while numbers are confirmed</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-xs-12 text-center">
+            <hr />
+            <h3>...and that's it!</h3>
+            <h3>Don't wait a moment longer!</h3>
+            <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+            <br />
+            <br />
+            <p>
+                All participants may only register once and play once a day,
+                <br />
+                else any prize won will be forfeited.
+            </p>
+            <p>
+                View <a ng-href="/#/en/rules-and-regulations" href="/#/en/rules-and-regulations">Rules &amp; Regulations</a> for more information.
+                <br />
+            </p>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="60%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>PRIZES</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefEN.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">Daily Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 550px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>How to Win</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Tier 1</td>
+                        <td>Match 6 &#43; SUPER NUMBER</td>
+                        <td>JPY 1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 2</td>
+                        <td>Match 6</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 3</td>
+                        <td>Match 5</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 4</td>
+                        <td>Match 4</td>
+                        <td>JPY 500</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">Monthly Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 550px; margin: auto;">
+                    <div class="mo-history-cs flex">
+                        <div class="mo-history-cs-text">Coming soon!</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 550px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>Entry Condition</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Participation</td>
+                        <td>Play at least 10 times during the month</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Loyal Weekender</td>
+                        <td>Play at least 8 weekend days<br />during the month</td>
+                        <td>JPY 20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Booby Prize</td>
+                        <td>No prizes won during the month</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden-xs hidden-md hidden-lg">
+
+        <div class="row col-xs-12 text-center">
+            <h1><b>HOW TO PLAY</b></h1>
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center" style="margin-left: 2%;">
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 1</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>Login</h3><br />
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 2</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>Select 7 numbers &amp; click PLAY</h3><br />
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 3</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>Select a sponsor banner that most interests you</h3><br />
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 4</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>Browse sponsor page while numbers are confirmed</h3><br />
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-xs-12 text-center">
+            <h3>...and that's it!</h3>
+            <h3>Don't wait a moment longer!</h3>
+            <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+            <br />
+            <br />
+            <p>
+                All participants may only register once and play once a day,
+                <br />
+                else any prize won will be forfeited.
+            </p>
+            <p>
+                View <a ng-href="/#/en/rules-and-regulations" href="/#/en/rules-and-regulations">Rules &amp; Regulations</a> for more information.
+                <br />
+            </p>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="80%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>PRIZES</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefEN.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">Daily Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 550px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>How to Win</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Tier 1</td>
+                        <td>Match 6 &#43; SUPER NUMBER</td>
+                        <td>JPY 1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 2</td>
+                        <td>Match 6</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 3</td>
+                        <td>Match 5</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 4</td>
+                        <td>Match 4</td>
+                        <td>JPY 500</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">Monthly Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 550px; margin: auto;">
+                    <div class="mo-history-cs flex">
+                        <div class="mo-history-cs-text">Coming soon!</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 550px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>Entry Condition</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Participation</td>
+                        <td>Play at least 10 times during the month</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Loyal Weekender</td>
+                        <td>Play at least 8 weekend days<br />during the month</td>
+                        <td>JPY 20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Booby Prize</td>
+                        <td>No prizes won during the month</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden-sm hidden-md hidden-lg">
+
+        <div class="col-xs-12 text-center">
+            <h1><b>HOW TO PLAY</b></h1>
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 1</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Login</h3><br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 2</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Select 7 numbers &amp; click PLAY</h3><br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 3</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Select a sponsor banner that most interests you</h3><br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>STEP 4</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>Browse sponsor page while numbers are confirmed</h3><br />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <h3>...and that's it!</h3>
+                <h3>Don't wait a moment longer!</h3>
+                <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+                <br />
+                <br />
+                <p>
+                    All participants may only register once and play once a day,
+                    <br />
+                    else any prize won will be forfeited.
+                </p>
+                <p>
+                    View <a ng-href="/#/en/rules-and-regulations" href="/#/en/rules-and-regulations">Rules &amp; Regulations</a> for more information.
+                    <br />
+                </p>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="90%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>PRIZES</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefEN.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">Daily Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 500px;">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>How to Win</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Tier 1</td>
+                        <td>Match 6 &#43; SUPER NUMBER</td>
+                        <td>JPY 1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 2</td>
+                        <td>Match 6</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 3</td>
+                        <td>Match 5</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tier 4</td>
+                        <td>Match 4</td>
+                        <td>JPY 500</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">Monthly Sweepstakes</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 500px; margin: auto;">
+                    <div class="mo-history-cs flex" style="width: 500px;">
+                        <div class=" mo-history-cs-text">Coming soon!</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 500px;">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>Category</th>
+                        <th>Entry Condition</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td>Participation</td>
+                        <td>Play at least 10 times<br />during the month</td>
+                        <td>JPY 100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Loyal Weekender</td>
+                        <td>Play all weekend days<br />during the month</td>
+                        <td>JPY 20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Booby Prize</td>
+                        <td>No prizes won during the month</td>
+                        <td>JPY 5,000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("tr:odd").not(".space").css("background-color", "#E0DED5");
+        $("tr:even").not(".space").css("background-color", "#F0EFEB");
+    });
+</script>

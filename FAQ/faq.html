@@ -1,0 +1,123 @@
+﻿<style>
+    h2, h3, h4 {
+        font-weight: bold;
+    }
+
+    .faqs {
+        padding: 0 40px 0 20px;
+    }
+
+        .faqs dt {
+            font-weight: bold;
+            padding-top: 5px;
+        }
+
+            .faqs dt:hover {
+                cursor: pointer;
+            }
+
+        .faqs dd {
+            padding: 0 0 0 20px;
+        }
+
+        .faqs .hover {
+            text-decoration: underline;
+        }
+
+        .faqs p {
+            margin: 0.5em 0;
+            text-align: justify;
+        }
+
+    .faqs-list {
+        margin: 0;
+        padding: 0 0 0 20px;
+    }
+
+    .faqs-ol {
+        counter-reset: foo;
+        display: table;
+    }
+
+    .faqs-li {
+        list-style: none;
+        counter-increment: foo;
+        display: table-row;
+        text-align: justify;
+    }
+
+        .faqs-li::before {
+            content: counter(foo) ".";
+            display: table-cell;
+            text-align: right;
+            padding-right: .3em;
+        }
+</style>
+
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="body-content container">
+    <!-- Appendix Modal -->
+    <div class="modal fade" id="modFAQappx" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: none;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body jpn-text">
+                    <p>わたしたちは、毎年、優れた環境製品にかかわる事業化や優れた環境ビジネスに対する計画をもった方たちと会数多く会合してきましたが常に不満を抱いていました。この理由は、環境企業家等の事業計画が「担保」に値しないために、その事業計画を開始することができなかったからです。言い換えれば、事業資金の融資や投資を希望する場合、一般的に銀行や投資者たちが条件として求めてくる自己資金の保有（事業資金全体の25～30％を企業家が保有していること）が満たされていませんでした。</p>
+                    <p>また、環境企業家等の科学技術は、十分に機能すると証明されている場合であってもBAT（利用可能な最善の科学技術）リストに挙げられませんでした。しかしながら、金融業界での「最善」という用語は、「旧式」、「時代遅れ」としてもとらえられます。なぜなら銀行や投資家の求める技術とは十分な実績やビジネスとしての安全性に重きが置かれているからです。結局は斬新な先端技術は採用されなくなってしまうのです。</p>
+                    <p>事例として、太陽光発電の設置を目的とした現在の主要な製品は、シリコンを基盤としたパネルです。このような製品は安価であるとともに、担保に値します。しかしながら、この方法は最善の方法ではありません。すなわち、このような製品は、安定的なエネルギー供給という観点からは大きな疑問が残ります。例えば曇りや雨の場合、出力の98パーセントは提供不可能となります。これによって電力供給網が不安定化されます。一方これよりももっと優秀であり、安定した電力供給技術があったとしても科学技術は、銀行等が銀行側の利益にならない事業計画として判断されてしまい融資・投資の対象から外されてしまうケースが多くあります。</p>
+                    <p>現在、24時間 / 7日間 / 365日間に亘り安定的操業が可能な太陽光発電の科学技術が実在しています。これは、太陽光エネルギー、紫外線、可視光および赤外線の全領域を取り入れることが可能です。しかしながら、従来の科学技術は、たとえ快晴の日であっても、可視光の僅か30パーセントのエネルギーを利用しているに過ぎません。更にはこの新しい方法によって、従来のエネルギー保存の問題が解決されました。つまり、熱源の形式で数週間に亘り太陽光エネルギーをバッテリーのように保存することが可能になりました。何故このような優れた事業計画が担保に値しないのでしょうか？</p>
+                    <p>金融業界における現在のビジネスやり方では、科学技術の進展のみならず早急に必要な科学技術の早期実施も阻止しています。ACEFの参加者等は、これらの危険要因を軽減すること、更に金融業界の機能変更することを目的として、多くの方法ついて議論していました。しかしながら、著しい変化は一切起きていません。ごくまれに新技術と直接ビジネス関係にのある投資家や一部の未来技術に理解のある投資家からの「寛容な資金」が実在していますが、このような投資は現実的に事業計画を実施させるような莫大な金額ではありません。</p>
+                    <p>このように現状の当該金融業界の姿勢によって、環境上の科学技術ならびに付加価値の高いCSR（企業の社会的責任）を伴う多数の事業計画に関しての迅速な進展は阻止されています。つまり、そのような事業計画は、危険要因を伴うものとして判断されています。</p>
+                    <p>この見解の相違を埋めるために、弊社はガチャンプを設立しました。広告主からの収益は、下記の3つの目的のために利用されます。すなわち：</p>
+                    <ol class="faqs-list faqs-ol">
+                        <li class="faqs-list faqs-li">現状の金融業界が受け入れない科学技術、事業計画および企業に対して投資します。弊社は、最先端の科学技術ならびに実行可能な事業計画の実施を早めるために全力を尽くします。</li>
+                        <li class="faqs-list faqs-li">弊社によって資金援助された事業計画が実施された地域における学校機関および医療機関など、インフラを向上させるために全力を尽くします。</li>
+                        <li class="faqs-list faqs-li">更に、東日本大震災に代表される天変地異によって被害を受けた地域で活動するボランティア団体の活動や、飢餓や病気に苦しむ世界の子供たち、高齢者の支援に全力を尽くします。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1 text-right">
+        <a href="#/en/faq">English</a>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1 jpn-text">
+        <h2>よくある質問</h2>
+        <hr />
+        <h4>ガチャンプの関連</h4>
+        <dl class="faqs">
+            <dt>ガチャンプとは何か？</dt>
+            <dd>
+                <p>ガチャンプとは、無料のゲーム（スウィープ・ステークス）、すなわち、日本に居住している18歳以上のあらゆる人が毎日一回プレーできる無料のゲームです。参加者は、製品を購入したり、サービス料など一切の支払い義務はありません。一つだけ、やってもらうことはゲーム参加のためにはスポンサーの広告あるいはウェブサイトを閲覧することです。</p>
+            </dd>
+            <dt>誰が主催しているのか？</dt>
+            <dd>
+                <p>ガチャンプの創始者は、環境関連事業の企業家であるハンス・ヘニング・ユーデック（Hans-Henning Judek）氏は日本に35年間住みながら日本と横浜をこよなく愛するドイツ人です。同氏は2008年アジア・クリーン・エネルギー・フォーラム（ACEF）において再生可能エネルギープロジェクトのプレゼンテーションを行いトップイノベーション賞を受賞し、再生可能エネルギー（太陽光、バイオマス、バイオ燃料）の分野においてアジア諸国で活躍しています。また、アジア開発銀行の公認コンサルタントであるとともに、ACEFの議長をも務めていガます。更なる詳細についてお知りになりたい LinkedIn 会員の方は、<a target="_blank" href="https://jp.linkedin.com/in/hanshenningjudek">こちら</a>をクリックしてください。</p>
+            </dd>
+            <dt>設立された理由は？</dt>
+            <dd>
+                <p>代替エネルギー事業を加速させることによって脱原発を加速させたい！クリーンエネルギーの創造地球環境の保護！それが一番の理由です。新事業に対する金融機関の資金貸し出しには審査等に時間がかかりすぎ、どんなに良い内容であったも断念せざるを得なかったという事例が沢山あります。そんな事例を少しでも減らすためにスポンサー得られる広告料を事業支援に充てます。</p>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modFAQappx">詳しい内容にご興味がある方はここをご覧ください。</button>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // ---- FAQs --------------------------------------------------------
+
+        $('.faqs dd').hide(); // Hide all DDs inside .faqs
+        $('.faqs dt').hover(function () {
+            $(this).addClass('hover');
+        }, function () {
+            $(this).removeClass('hover');
+        }).click(function () { // Add class "hover" on dt when hover
+            $(this).next().slideToggle('normal'); // Toggle dd when the respective dt is clicked
+        });
+
+    });
+</script>

@@ -1,0 +1,70 @@
+﻿<style>
+    .proj-blog {
+        margin-top: 30px;
+    }
+
+    #odawaraCarousel {
+        margin: auto;
+        max-width: 640px;
+    }
+</style>
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="body-content container">
+    <!--<div class="col-lg-10 col-lg-offset-1 text-right">
+        <a href="#/en/privacy-policy">English</a>
+    </div>-->
+    <div class="col-lg-10 col-lg-offset-1 jpn-text">
+        <h2><b>大正時代の小水力発電復活へ</b></h2>
+        <hr />
+        <!-- Blog Carousel -->
+        <div id="odawaraCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#odawaraCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#odawaraCarousel" data-slide-to="1"></li>
+                <li data-target="#odawaraCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/Data/odawara-revival-1.jpg" alt="Odawara 1">
+                </div>
+                <div class="item">
+                    <img src="/Data/odawara-revival-2.jpg" alt="Odawara 2">
+                </div>
+                <div class="item">
+                    <img src="/Data/odawara-revival-3.jpg" alt="Odawara 3">
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" data-target="#visionCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" data-target="#visionCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Blog Carousel End -->
+
+        <div class="proj-blog">
+            <p>神奈川県小田原市、JR小田原駅からほんの数キロメートルの山林で、今、１００年前に造られた小水路発電所を復活させようとする取組が行われています。この設備は元々この山林の所有者であった辻村さんによって今から約百年も前の大正６年ごろ完成したと伝えられています。</p>
+            <p>約２キロ離れた川から水を引き、急斜面に造った水路に流し、ドイツ製の水車タービンを回して発電するというものでです。出力は１１７kW/h、発電した電気は自宅や近くの製材所で使ったり、紡績工場などにも販売されていたそうです。</p>
+            <p>その後、電線の整備が行われたことなどもあり、昭和２３年には閉鎖、その後放置されていました。再生可能エネルギーの普及促進に力を入れている小田原市でも、この設備の復活事業を計画したものの予算面での問題があり断念したといわれています。</p>
+            <p>それでも「自然の力を活用して里山の再生を」と願う山林の所有者や市民メンバーたちがこの発電の原点ともいえる設備の復活に汗を流しています。このような小さな設備は小田原のみならず日本全国で田んぼの用水路や小川などを活用して新たな展開も可能です。</p>
+            <p>古き先人たちの残してくれた遺産と、現代の英知と技術のコラボレーションをもってすれば脱原発にも一石を投じられることは間違いありません。ガチャンプではこのような活動をどんどん応援していきたいと考えます。</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 3000
+        });
+
+        $('.carousel').carousel('cycle');
+    });
+</script>  

@@ -1,0 +1,162 @@
+<style>
+    .user-setting {
+        background-color: rgba(0, 0, 0, 0.92);
+        width: 300px;
+        opacity: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        padding: 80px 10px;
+        margin-right: -300px;
+        right: 0;
+        z-index: 2;
+        -webkit-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+    }
+
+    .open {
+        margin-right: 0;
+        opacity: 1;
+    }
+
+    .user-setting div div h4 {
+        color: white;
+    }
+
+    .prof li a:hover {
+        background-color: rgba(55, 188, 112, 0.39);
+        color: white;
+    }
+
+    @media screen and (min-width: 800px) {
+        .btn-play::after {
+            content: "none";
+            color: #648a4b;
+            position: absolute;
+            width: 101%;
+            /*height: 30px;*/
+            bottom: -35px;
+            left: 0;
+            /*background-color: #648a4b;*/
+            width: 0;
+            height: 110px;
+            z-index: -200;
+            border-style: solid;
+            border-width: 0 72px 15px 0;
+            border-color: transparent #648a4b transparent transparent;
+        }
+
+        .navbar-custom.logout {
+            display: none;
+        }
+
+        .btn-reg {
+            margin-right: 2px;
+        }
+    }
+
+    @media screen and (min-width: 0px) and (max-width: 800px) {
+
+        .navbar-nav.navbar-right:last-child {
+            margin-right: -15px;
+        }
+    }
+
+    #menuText:hover, #nav-login-btn:hover, #nav-reg-btn:hover {
+        background-color: transparent;
+    }
+
+    .logout-link-nav {
+        cursor: pointer;
+        cursor: hand;
+    }
+
+    .gc-nav-item {
+        margin: 0 20px 0 0;
+        border: none;
+        padding: 0;
+    }
+
+    @media screen and (min-width: 0px) and (max-width: 800px) {
+
+        .gc-nav-hide {
+            display: none;
+        }
+    }
+</style>
+<div ng-controller="NavbarCtrl" ng-init="navbarInit()" style="z-index:200;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index:205;">
+        <div class="" style="max-width: 1200px; margin: auto;">
+            <div class="navbar-header">
+                <a class="" ng-href="#/">
+                    <img style="width: 50px; margin: 0 10px 0 0;" src="/Data/gotchamp_logo_no.png">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="menuText" class="navbar-toggle text-white" style="margin: 0 10px 0 0; line-height:50px; border: none; padding: 0;">MENU</div>
+                <div id="nav-login-btn" class="navbar-toggle gc-nav-item">
+                    <a href="#/login" class="text-white" title="ログイン" data-ng-hide="authentication.isAuth"><span class="fa fa-user fa-2x" style="line-height: 50px;"></span></a>
+                    <a ng-href="" class="logout-link-nav text-white jpn-text" data-ng-hide="!authentication.isAuth" ng-click="signOut();" style="line-height: 50px;"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;ログアウト</a>
+                </div>
+                <div id="nav-reg-btn" class="navbar-toggle gc-nav-item">
+                    <a href="#/register" class="text-white" title="会員登録" data-ng-hide="authentication.isAuth"><span class="fa fa-user-plus fa-2x" style="line-height: 50px;"></span></a>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse jpn-text" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a ng-href="#/" class="text-default bg-color green btn-play" style="border: 0 !important;"><span class=" ">ホーム</span></a>
+                    </li>
+                    <li><a ng-href="#/how-it-works">遊び方</a></li>
+                    <li><a ng-href="#/about-us">会社概要</a></li>
+                    <li><a ng-href="#/faq">FAQ</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right gc-nav-hide">
+                    <li class="active btn-custom btn-reg" data-ng-hide="authentication.isAuth" ng-show="showNavbar"><a ng-href="#/register" class="btn bg-color btn-primary">会員登録</a></li>
+                    <li class="active btn-custom" data-ng-hide="authentication.isAuth" ng-show="showNavbar"><a ng-href="#/login" class="bg-color green btn">ログイン</a></li>
+                    <li data-ng-hide="!authentication.isAuth">
+                        <a class="logout-link-nav jpn-text" ng-href="" style="margin-right: 15px;" ng-show="showNavbar" ng-click="signOut();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;ログアウト</a>
+                    </li>
+                    <!--<li data-ng-hide="!authentication.isAuth">
+                        <a ng-click="toggle();" class="navbar-custom bars" style="cursor:pointer;" ng-show="showNavbar"><i class="fa fa-bars"></i></a>
+                    </li>
+                    <li data-ng-hide="!authentication.isAuth">
+                        <a ng-href="#/profile" class="navbar-custom logout">プロフィール</a>
+                    </li>
+                    <li data-ng-hide="!authentication.isAuth">
+                        <a ng-href="" class="navbar-custom logout" ng-click="signOut();">Logout</a>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="padding-bottom: 65px !important;"></div>
+    <div id="" class="user-setting" ng-show="showNavbar" style="z-index:200;" ng-init="getLocation();" data-ng-hide="!authentication.isAuth">
+        <div class="row">
+            <div class="col-xs-3">
+                <img width="60" id="navbarPhoto" class="img-circle" src="Client/src/blank-profile.jpg" />
+            </div>
+            <div class="col-xs-9">
+                <h4 style="direction:ltr !important; width: 100%;">{{userName}}</h4>
+                <a ng-href="" ng-click="signOut();">Logout</a>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-center">選択中のナンバー</h4>
+                <h4 class="text-center">{{latestCombination}}</h4>
+            </div>
+            <div class="col-xs-12">
+                <ul class="nav prof">
+                    <li><a ng-href="#/profile">プロフィール</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

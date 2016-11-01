@@ -1,0 +1,111 @@
+﻿<style>
+    h2, h3, h4 {
+        font-weight: bold;
+    }
+
+    .faqs {
+        padding: 0 40px 0 20px;
+    }
+
+    .faqs dt {
+        font-weight: bold;
+        padding-top: 5px;
+    }
+
+    .faqs dt:hover {
+        cursor: pointer;
+    }
+
+    .faqs dd {
+        padding: 0 0 0 20px;
+    }
+
+    .faqs .hover {
+        text-decoration: underline;
+    }
+
+    .faqs p {
+        margin: 0.5em 0em;
+        text-align: justify;
+    }
+
+    .faqs-list {
+        margin: 0;
+        padding: 0 0 0 20px;
+    }
+
+    .faqs-ol {
+        counter-reset: foo;
+        display: table;
+    }
+
+    .faqs-li {
+        list-style: none;
+        counter-increment: foo;
+        display: table-row;
+        text-align: justify;
+    }
+
+    .faqs-li::before {
+        content: counter(foo) ".";
+        display: table-cell;
+        text-align: right;
+        padding-right: .3em;
+    }
+</style>
+
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="body-content container">
+    <div class="col-lg-10 col-lg-offset-1 text-right">
+        <a href="#/faq">日本語</a>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1">
+        <h2>Frequently Asked Questions</h2>
+        <hr />
+        <p style="padding-bottom: 10px;"><b>Note: </b>Click on any of the questions below to view the answer.</p>
+        <h4>Gotchamp Related</h4>
+        <dl class="faqs">
+            <dt>What is GOTCHAMP?</dt>
+            <dd>
+                <p>GOTCHAMP is a free sweepstakes game that any person over 18 years of age residing in Japan can play every day once. There is no obligation for a participant to buy products or pay for services. In order to participate, the only obligation is to click on one of the banners of our sponsors that the participant is most interested in.</p>
+            </dd>
+            <dt>Who is behind it?</dt>
+            <dd>
+                <p>The initiator of GOTCHAMP is environmental entrepreneur and Top Innovation Prize winner at the Asian Clean Energy Forum (ACEF2008), Hans-Henning Judek. Mr. Judek is a German citizen that has been living in Japan for 35 years and working all over Asia in the field of renewable energy (solar, biomass, bio fuel). He is registered consultant to the Asian Development Bank and a regular speaker at the ACEF. LinkedIn members can find more details <a target="_blank" href="https://jp.linkedin.com/in/hanshenningjudek">here</a>.</p>
+            </dd>
+            <dt>Why was it established?</dt>
+            <dd>
+                <p>Mr. Judek was frustrated meeting every year, other environmental entrepreneurs with excellent products and/or projects, who were not able to get their projects off the ground just because they were not &quot;bankable.&quot; In other words, they were lacking the 25-30% own capital to provide the &quot;skin-in-the-game&quot; that banks and private or institutional financiers require in exchange for debt financing.</p>
+                <p>Furthermore, being bankable does not necessarily guarantee financing as their technologies, while proven to work well, may not be on the BAT (Best Available Technologies) List. By definition, those listed on the BAT List are technologies that carry the least technical risks for banks and financiers, but by no means indicate that they are the most advanced. So although &quot;best&quot; is true for the financing world, one could possibly also read it as &quot;old&quot; or &quot;outdated.&quot;</p>
+                <p>For example, the current mainstay products for solar installations are silicone based panels. They are cheap and bankable. But they are not the most advanced solution. They provide a &quot;roller coaster&quot; energy output (e.g. one big cloud and 98% of the output is gone) that is destabilizing the power grids. There are much better, less disruptive technologies out there that don't get any traction, as banks are not financing projects that utilize them.</p>
+                <p>One such technology is capable of continuously (24/7/365) harvesting the full electromagnetic spectrum of sun energy (ultra violet, visible light and infrared), as compared with current technologies that only convert visible light or just 30% of the sun’s total energy – assuming of course that there are no clouds. This new technology utilizes a combination of multiple proven technologies that make up 95% of this new system and also has a promising solution to problems with energy storage, potentially storing generated energy for weeks in the form of heat. So as good as it sounds, are technologies such as this currently bankable? If you've guess no, then you would be correct.</p>
+                <p>The current modus operandi of the financing world is hindering technological progress and early implementation of urgently needed technologies, especially those that are available, but not implemented.</p>
+                <p>The ACEF participants continuously discuss many options and desirable actions for mitigating these risks and change the way the financing industry works, but in principle not much has changed. Yes, there are impact investors and &quot;patient money&quot;, but their number is not large enough to really make an impact.</p>
+                <p>This stance of the financing world prevents faster progress in terms of environmental technologies and many projects with high societal value, which are considered risky when viewed from a profit-focused perspective.</p>
+                <p>To help bridge this gap we have established GOTCHAMP. The proceeds from our advertisers and sponsors will be allocated for use in the following three areas:</p>
+                <ol class="faqs-list faqs-ol">
+                    <li class="faqs-list faqs-li">Investing in technologies, projects and companies that are not bankable in the eyes of the current financing world. We want help to accelerate the implementation of cutting edge technologies and financially viable projects that are hindered by current financing practices.</li>
+                    <li class="faqs-list faqs-li">We want to help develop and improve social infrastructure, such as schools and hospitals in the same regions that the projects we sponsor are operating.</li>
+                    <li class="faqs-list faqs-li">We also want to assist disaster relief organizations, specifically in the short term those operating in Fukushima and Iwate prefectures; areas destroyed by the tsunami, who are seeking help for the socially weak, like senior citizens and children.</li>
+                </ol>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // ---- FAQs --------------------------------------------------------
+
+        $('.faqs dd').hide(); // Hide all DDs inside .faqs
+        $('.faqs dt').hover(function () {
+            $(this).addClass('hover');
+        }, function () {
+            $(this).removeClass('hover');
+        }).click(function () { // Add class "hover" on dt when hover
+            $(this).next().slideToggle('normal'); // Toggle dd when the respective dt is clicked
+        });
+
+    });
+</script>

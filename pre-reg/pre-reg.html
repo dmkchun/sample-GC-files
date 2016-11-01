@@ -1,0 +1,414 @@
+﻿<style>
+    .progress {
+        height: 150px;
+        /*width: 500px;*/
+        border-radius: 25px;
+        -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        overflow: visible;
+        margin: 0;
+    }
+
+    .progress-bar {
+        background-color: #648A4B;
+        border-radius: 25px;
+    }
+
+    .class-system {
+        max-width: 600px;
+    }
+
+    .progress-title {
+        display: block;
+        float: left;
+        width: 30%;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    .bar-wrap {
+        position: relative;
+    }
+
+    .progress-marker {
+        width: 1px;
+        height: 150px;
+        position: absolute;
+        background: #fff;
+        border-right: solid 2px #000;
+        opacity: 0.3;
+        bottom: 0;
+    }
+
+    .class-axis {
+        display: block;
+        float: left;
+        width: 100%;
+        /*margin: 0px 0 10px 0;*/
+    }
+
+    .class-type {
+        display: block;
+        float: left;
+        width: 25%;
+        font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    .class-type-end {
+        display: block;
+        float: left;
+        width: 12.5%;
+        font-weight: bold;
+    }
+
+    .class-type-number {
+        display: block;
+        float: left;
+        width: 25%;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    .prize-axis {
+        display: block;
+        float: left;
+        width: 100%;
+        /*margin: 0px 0 10px 0;*/
+    }
+
+    .prize {
+        display: block;
+        float: left;
+        width: 25%;
+        font-weight: bold;
+        font-size: 5em;
+    }
+
+    .prize-box {
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        border: 4px dashed black;
+        border-radius: 8px;
+        float: none;
+        margin: auto;
+        position: relative;
+    }
+
+    .prize-lock {
+        padding: 2px 2px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.25em;
+    }
+
+    .prize-hide {
+        float: left;
+        width: 92px;
+        height: 92px;
+        font-family: "Montserrat Black", sans-serif;
+        font-size: 40px;
+        line-height: 92px;
+    }
+
+    .center {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .full-width-bar {
+        background: #313131;
+        color: #9d9d9d;
+    }
+
+    ul.share-buttons {
+        list-style: none;
+        padding: 0;
+    }
+
+        ul.share-buttons li {
+            display: inline;
+        }
+
+        ul.share-buttons a {
+            color: #4b4b4b;
+        }
+
+            ul.share-buttons a.fbShare:hover {
+                color: #3b5998;
+            }
+
+            ul.share-buttons a.twShare:hover {
+                color: #55acee;
+            }
+
+        ul.share-buttons span {
+            font-size: 64px;
+            padding: 0 2px;
+        }
+</style>
+<style>
+    .mod-body-prize {
+        padding: 0;
+    }
+
+    .modal-text {
+        overflow: hidden;
+        padding: 15px;
+        border-left: 1px solid #e5e5e5;
+        min-height: 330px;
+    }
+
+    .modal-text-sm {
+        padding: 15px;
+    }
+
+    .modal-img {
+        float: left;
+        padding: 15px;
+    }
+
+    .modal-img-sm {
+        border-bottom: 1px solid #e5e5e5;
+        padding: 15px;
+    }
+
+    .prize-btn {
+        display: block;
+        background-color: #f7f7f7;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+        background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
+        background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
+        background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
+        background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
+        color: #a7a7a7;
+        margin: 16px;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        text-align: center;
+        line-height: 60px;
+        border-radius: 50%;
+        box-shadow: 0 3px 8px #aaa, inset 0 2px 3px #fff;
+        font-size: 32px;
+        border: none;
+    }
+
+    button.prize-btn:hover {
+        color: #648A4B;
+        background: #f5f5f5;
+    }
+</style>
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="body-content jpn-text" style="padding: 20px 0 0;">
+    <!-- Prize Modal - S Class -->
+    <div class="modal fade in" id="mod-s-prize" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4><strong>登録キャンペーン　－　S クラス賞</strong></h4>
+                </div>
+                <div class="modal-body mod-body-prize">
+                    <div class="hidden-xs hidden-sm">
+                        <div class="modal-img">
+                            <img src="/Data/s-prize.jpg">
+                        </div>
+                        <div class="modal-text text-center">
+                            <p>ついに登録キャンペーン第1弾が登場！！</p>
+                            <p class="h3" style="margin: 15px 0;"><strong>バリ島旅行２泊３日　－　１組２名様</strong></p>
+                            <p>5000人中1人の当選者になろう！！（Sクラス）</p>
+                            <p>もしまだ登録がお済みでない方、最初の5000人になるにはまだ遅くありません。<br />下のリンクから登録してみてください。</p>
+                            <a href="#/register" target="_blank"><button class="btn btn-lg bg-color btn-primary text-default" style="margin: 20px 0 30px;">ENTER NOW!</button></a>
+                            <p class="text-sm">賞品の発送に関しては宅配業者などを利用させていただきます。賞品の発送日時のご指定はできません。やむを得ない事情により、賞品は予告なく変更となることがあります。</p>
+                        </div>
+                        <span style="clear: left; display: block;"></span>
+                    </div>
+                    <div class="hidden-md hidden-lg">
+                        <div class="text-center">
+                            <img src="/Data/s-prize.jpg" class="modal-img-sm">
+                        </div>
+                        <div class="modal-text-sm text-center">
+                            <p>ついに登録キャンペーン第1弾が登場！！</p>
+                            <p class="h3" style="margin: 15px 0;"><strong>バリ島旅行２泊３日　－　１組２名様</strong></p>
+                            <p>5000人中1人の当選者になろう！！（Sクラス）</p>
+                            <p>もしまだ登録がお済みでない方、最初の5000人になるにはまだ遅くありません。<br />下のリンクから登録してみてください。</p>
+                            <a href="#/register" target="_blank"><button class="btn btn-lg bg-color btn-primary text-default" style="margin: 20px 0 30px;">ENTER NOW!</button></a>
+                            <p class="text-sm">賞品の発送に関しては宅配業者などを利用させていただきます。賞品の発送日時のご指定はできません。やむを得ない事情により、賞品は予告なく変更となることがあります。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="max-width:1200px; margin: auto;">
+        <div class="col-lg-10 col-lg-offset-1 text-right">
+            <a href="#/en/pre-registration">English</a>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-xs-12 text-center">
+            <h2 class="h1"><b>登録キャンペーン</b></h2>
+            <h3>現在、サイトにご登録いただくと<br />登録キャンペーンにご参加いただけます。</h3>
+            <h3 class="hidden-xs">他のプレーヤーより先に登録して、よりたくさんのチャンスを掴もう！</h3>
+            <h3 class="hidden-sm hidden-md hidden-lg">他のプレーヤーより先に登録して<br />よりたくさんのチャンスを掴もう！</h3>
+            <p>期間：　2016.06.01 ~ 2017.07.31 17:59</p>
+
+            <br />
+            <br />
+            <div class="class-system center">
+                <div class="row">
+                    <div class="class-axis">
+                        <div class="progress-title">現在の登録者数：</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="bar-wrap">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                                <span class="sr-only">10%</span>
+                            </div>
+                        </div>
+                        <div style="right: 25%;" class="progress-marker"></div>
+                        <div style="right: 50%;" class="progress-marker"></div>
+                        <div style="right: 75%;" class="progress-marker"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="class-axis" style="margin: 0 0 10px 0;">
+                        <div class="class-type-number text-center" style="margin-left: 12.5%">5,000</div>
+                        <div class="class-type-number text-center">20,000</div>
+                        <div class="class-type-number text-center">100,000</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="class-axis">
+                        <div class="class-type-end">&nbsp;</div>
+                        <div class="class-type text-center">S クラス</div>
+                        <div class="class-type text-center">A クラス</div>
+                        <div class="class-type text-center">B クラス</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="class-axis" style="padding: 10px 0;">
+                        <div class="class-type text-center" style="margin-left: 12.5%;">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="class-type text-center">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="class-type text-center">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="prize-axis">
+                        <div class="class-type-end">&nbsp;</div>
+                        <div class="prize text-center">
+                            <div class="prize-box">
+                                <span class="glyphicon glyphicon-lock prize-lock" aria-hidden="true"></span>
+                                <button type="button" class="prize-btn" data-toggle="modal" data-target="#mod-s-prize">
+                                    <span class="glyphicon glyphicon-grain" aria-hidden="true" style="line-height: 56px;"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="prize text-center">
+                            <div class="prize-box">
+                                <span class="glyphicon glyphicon-lock prize-lock" aria-hidden="true"></span>
+                                <div class="prize-hide">?</div>
+                            </div>
+                        </div>
+                        <div class="prize text-center">
+                            <div class="prize-box">
+                                <span class="glyphicon glyphicon-lock prize-lock" aria-hidden="true"></span>
+                                <div class="prize-hide">?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 text-center" style="padding-top: 10px;">
+                <h6>※ボックス内をクリックすると賞品内容が表示されます。</h6>
+                <h4>周りの友達を誘ってみんなで一緒に当選チャンスを掴もう！！</h4>
+                <ul class="share-buttons">
+                    <li><a class="fbShare" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.gotchamp.jp%2F%23%2Fpre-registration&t=%E3%82%AC%E3%83%81%E3%83%A3%E3%83%B3%E3%83%97%E3%81%AE%E4%BA%8B%E5%89%8D%E7%99%BB%E9%8C%B2%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3" title="Share on Facebook" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
+                    <li><a class="twShare" href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fwww.gotchamp.jp%2F%23%2Fpre-registration&text=%23GOTCHAMP%20%E3%81%AB%E4%BA%8B%E5%89%8D%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E7%99%BB%E9%8C%B2%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81%E6%9C%80%E9%AB%98%E5%BD%93%E3%81%9B%E3%82%93%E9%A1%8D100%E4%B8%87%E5%86%86%E3%80%82%E5%8F%8E%E7%9B%8A%E3%81%AE100%25%E3%81%8C%E8%87%AA%E7%84%B6%E5%86%8D%E7%94%9F%E5%8F%AF%E8%83%BD%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%A8%E6%85%88%E5%96%84%E5%9B%A3%E4%BD%93%E3%81%AE%E6%94%AF%E6%8F%B4%E3%81%AB%E5%85%85%E3%81%A6%20%E3%82%89%E3%82%8C%E3%82%8B%E3%80%81%E6%AF%8E%E6%97%A5%E7%84%A1%E6%96%99%E3%81%A7%E3%83%97%E3%83%AC%E3%82%A4%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E5%AE%9D%E3%81%8F%E3%81%98%E3%82%B2%E3%83%BC%E3%83%A0%E3%80%82%20https%3A%2F%2Fwww.gotchamp.jp%2F%23%2Fpre-registration" target="_blank" title="Tweet"><span class="fa fa-twitter-square"></span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center" style="padding: 20px 0 10px;">
+            <table align="center" style="font-size: 0; line-height: 0; width: 90%;">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row full-width-bar">
+                <h3>クラス・システム</h3>
+                <br />
+                <div class="class-system center" style="font-size:0.99em;">
+                    <p>登録キャンペーンとは、ゲームの参加者を募るための企画であり<br />期間中にこのサイトにご登録いただくだけで<br />豪華賞品を獲得できるチャンスがあります。</p>
+                    <p>まず、登録者数が５千人を突破すると、ご登録いただいた5千人の中の1人が当選者となります。</p>
+                    <p style="color: #fff;">そして、この抽選は２万人と１０万人の際にも行われ<br />さらに、各抽選はそれまでに登録した方全員が対称になりますので<br />より多くの方がこのキャンペーン中に登録することによって<br />豪華商品を獲得できるチャンスが増えるのです！</p>
+                    <p>豪華賞品の内容はお楽しみ！</p>
+                    <p>友達や家族といち早く参加して、このチャンスをものにしよう！</p>
+                    <p>賞品は登録者数に相当し、目標人数は以下のようになります。</p>
+                    <p style="width: 225px; text-align: center; margin: -10px auto 10px;">登録者数5,000人 - S クラス<br />登録者数20,000人 - A クラス<br />登録者数100,000人 - B クラス</p>
+                    <p>※ Ｓクラスの賞品につきましては2000人を達成された際に発表されますが<br />Ａクラス、Ｂクラスの賞品は目標人数が達成された際の発表となります。</p>
+                </div>
+                <a href="#/register" ng-href="#/register"><button class="btn btn-lg bg-color btn-primary text-default" style="margin: 20px 0 30px;">ENTER NOW!</button></a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center" style="padding: 10px 0 10px;">
+            <table align="center" style="font-size: 0; line-height: 0; width: 90%;">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <h3>登録キャンペーンのルール</h3>
+            <br />
+            <ul class="pre-reg-rules class-system center text-left">
+                <li>全てのセクションは<a ng-href="#/rules-and-regulations" href="#/rules-and-regulations">規則および規制</a>に実施されます。</li>
+                <!--<li>事前登録キャンペーンの期間中、通常のゲームをお試しでご利用いただくことは可能ですが、もし当選ナンバーが当たっていても、賞金の授与はされません。</li>-->
+                <li>登録キャンペーンの抽選の当選者の発表は、目標人数が当たる日から1ヵ月後となります。</li>
+                <li>当選者は登録キャンペーンの参加者の中からランダムに選出され、その結果はEメールにてお知らせいたします。</li>
+                <li>登録キャンペーンの参加者は、参加条件さえ満たしていれば、全ての抽選賞品を獲得できるチャンスもあります。</li>
+                <li><b>注）　アカウントはお一人様につき１つに限り、複数のアカウントを取得することはできません。</b>違反者は永久にこのゲームに参加することが出来なくなり、もし当選していたとしてもその権利を失います。</li>
+                <li>参加方法は日本に住居を持っている18歳以上の方であれば、どなたでもご参加いただくことが出来ます。</li>
+                <li>抽選の受賞者は、身分確認のため、運転免許証やその他の政府発行の有効である身分証明書のコピーの提出をしていただく必要があります。</li>
+                <li>当選賞品を他の当事者にこちらから譲渡することは出来ません。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.fbShare').click(function (e) {
+            e.preventDefault();
+            window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+            return false;
+        });
+    });
+
+    $(document).ready(function () {
+        $('.twShare').click(function (e) {
+            e.preventDefault();
+            window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+            return false;
+        });
+    });
+</script>

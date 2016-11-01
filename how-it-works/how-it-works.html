@@ -1,0 +1,607 @@
+﻿<style>
+    h3 {
+        margin: 10px 0;
+    }
+
+    th {
+        font-weight: bold;
+        color: white;
+        background-color: #A29B73;
+        text-align: center;
+        border-bottom: 4px solid white;
+        padding: 8px 0;
+    }
+
+    td {
+        padding: 4px 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-style: hidden;
+    }
+
+        table th, table td {
+            border-right: 2px solid white;
+            border-top: 2px solid white;
+        }
+
+    .row3 h3 {
+        font-size: 22px;
+    }
+
+    .row3-wrap {
+        /*max-width: 235px;*/
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .mo-history-cs {
+        position: absolute;
+        text-align: center;
+        width: 600px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        top: 0;
+        z-index: 10;
+    }
+
+    .mo-history-cs-text {
+        color: white;
+        font-size: 2em;
+        margin: auto;
+    }
+
+    .flex {
+        display: -webkit-box; /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+        display: -moz-box; /* OLD: Firefox (buggy) */
+        display: -ms-flexbox; /* MID: IE 10 */
+        display: -webkit-flex; /* NEW, Chrome 21+ */
+        display: flex; /* NEW: Opera 12.1, Firefox 22+ */
+        -webkit-box-align: center;
+        -moz-box-align: center; /* OLD… */
+        -ms-flex-align: center; /* You know the drill now… */
+        -webkit-align-items: center;
+        align-items: center;
+    }
+</style>
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="text-color black container jpn-text">
+    <div class="col-xs-12 text-right">
+        <a href="#/en/how-it-works">English</a>
+    </div>
+    <div class="row hidden-sm hidden-xs">
+
+        <div class="row col-xs-12 text-center">
+            <h1><b>遊び方</b></h1>
+            <hr />
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 1</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3 class="row3-wrap">ログイン</h3>
+                </div>
+                <div class="col-xs-12" style="margin-left:-10px;">
+                    <div class="gc-info">
+                        <abbr rel="tooltip" title="初回のみ、簡単な登録が必要です。登録した日から毎日懸賞に参加できます。希望された方を除き、広告メールなどが配信されることはありません。同一人物による複数の登録はできません。">
+                            <span class="fa fa-info"></span>
+                        </abbr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 2</b></h2>
+                </div>
+                <div class="row3 col-xs-12" style="padding: 0;">
+                    <h3 class="row3-wrap">7つの数字を選んで<br /><span style="background-color: #A29B73; color: white; font-size: 0.5em; padding: 5px; vertical-align: middle;">PLAY</span>をクリック！</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="padding: 0;">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 3</b></h2>
+                </div>
+                <div class="row3 col-xs-12" style="padding: 0;">
+                    <h3 class="row3-wrap">気に入った広告を１つ選んでクリック！</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="row col-xs-12">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 4</b></h2>
+                </div>
+                <div class="row3 col-xs-12" style="padding: 0;">
+                    <h3 class="row3-wrap">スポンサー企業のページが開き、懸賞登録が完了</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-xs-12 text-center">
+            <hr />
+            <h3>さあ、始めましょう!</h3>
+            <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+            <br />
+            <br />
+            <p>
+                すべての参加者は1日1度だけプレイすることができます。<br />違反行為は無効となりますので、ご了承ください。
+            </p>
+            <p>
+                <a ng-href="/#/rules-and-regulations" href="/#/rules-and-regulations">詳しくはご利用規約（ルール）</a>をお読みください。
+                <br />
+            </p>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="60%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>数字組み合わせ例</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefJP.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">デイリー当選内容</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 600px">
+                    <colgroup>
+                        <col style="width: 23%">
+                        <col style="width: 54%">
+                        <col style="width: 23%">
+                    </colgroup>
+                    <tr>
+                        <th>等級</th>
+                        <th>一致した数字</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>1等</td>
+                        <td>6つの数字とスーパーナンバーが<br />一致した場合</td>
+                        <td>100万円</td>
+                    </tr>
+                    <tr>
+                        <td>2等</td>
+                        <td>6つの数字が一致した場合</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>3等</td>
+                        <td>5つの数字が一致した場合</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>4等</td>
+                        <td>4つの数字が一致した場合</td>
+                        <td>商品券500円分</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">ダブルチャンス当選内容</h3>
+                <h6>※ダブルチャンスは普段ご協力して頂いてる方に対して日頃の感謝を込めて行っております</h6>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 600px; margin: auto;">
+                    <div class="jpn-text mo-history-cs flex">
+                        <div class="mo-history-cs-text">ただいま準備中です</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 600px">
+                    <colgroup>
+                        <col style="width: 23%">
+                        <col style="width: 54%">
+                        <col style="width: 23%">
+                    </colgroup>
+                    <tr>
+                        <th>賞</th>
+                        <th>抽選対象者</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>月間参加賞</td>
+                        <td>月に10回以上プレイした方の中から抽選</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>ロイヤル<br />ウィークエンダー賞</td>
+                        <td style="font-size: 0.95em;">1か月の間に週末8回以上プレイした方の中から抽選</td>
+                        <td>商品券20,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>ブービー賞</td>
+                        <td>月初～月末まで当選が無い方の中から抽選</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden-xs hidden-md hidden-lg">
+
+        <div class="row col-xs-12 text-center">
+            <h1><b>遊びかた</b></h1>
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center" style="margin-left: 2%;">
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 1</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>ログイン</h3>
+                </div>
+                <div class="col-xs-12" style="margin: 0 0 30px -10px;">
+                    <div class="gc-info">
+                        <abbr rel="tooltip" title="初回のみ、簡単な登録が必要です。登録した日から毎日懸賞に参加できます。希望された方を除き、広告メールなどが配信されることはありません。同一人物による複数の登録はできません。">
+                            <span class="fa fa-info"></span>
+                        </abbr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 2</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>7つの数字を選んで<br /><span style="background-color: #A29B73; color: white; font-size: 0.5em; padding: 5px; vertical-align: middle;">PLAY</span>をクリック！</h3><br />
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 3</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%; padding: 0;">
+                    <h3>気に入った広告を<br />１つ選んでクリック！</h3><br />
+                </div>
+            </div>
+
+            <div class="row col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 4</b></h2>
+                </div>
+                <div class="row3 col-xs-6" style="margin-left: 23%;">
+                    <h3>スポンサー企業のページが開き<br />懸賞登録が完了</h3><br />
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-xs-12 text-center">
+            <h3>さあ、始めましょう!</h3>
+            <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+            <br />
+            <br />
+            <p>
+                すべての参加者は1日1度だけプレイすることができます。<br />違反行為は無効となりますので、ご了承ください。
+            </p>
+            <p>
+                <a ng-href="/#/rules-and-regulations" href="/#/rules-and-regulations">詳しくはご利用規約（ルール）</a>をお読みください。
+                <br />
+            </p>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="80%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>数字組み合わせ例</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefJP.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">デイリー当選内容</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 600px">
+                    <colgroup>
+                        <col style="width: 23%">
+                        <col style="width: 54%">
+                        <col style="width: 23%">
+                    </colgroup>
+                    <tr>
+                        <th>等級</th>
+                        <th>一致した数字</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>1等</td>
+                        <td>6つの数字とスーパーナンバーが<br />一致した場合</td>
+                        <td>100万円</td>
+                    </tr>
+                    <tr>
+                        <td>2等</td>
+                        <td>6つの数字が一致した場合</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>3等</td>
+                        <td>5つの数字が一致した場合</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>4等</td>
+                        <td>4つの数字が一致した場合</td>
+                        <td>商品券500円分</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">ダブルチャンス当選内容</h3>
+                <h6>※ダブルチャンスは普段ご協力して頂いてる方に対して日頃の感謝を込めて行っております</h6>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 600px; margin: auto;">
+                    <div class="jpn-text mo-history-cs flex">
+                        <div class="mo-history-cs-text">ただいま準備中です</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 600px">
+                    <colgroup>
+                        <col style="width: 23%">
+                        <col style="width: 54%">
+                        <col style="width: 23%">
+                    </colgroup>
+                    <tr>
+                        <th>賞</th>
+                        <th>抽選対象者</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>月間参加賞</td>
+                        <td>月に10回以上プレイした方の中から抽選</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>ロイヤル<br />ウィークエンダー賞</td>
+                        <td style="font-size: 0.95em;">1か月の間に週末8回以上プレイした方の中から抽選</td>
+                        <td>商品券20,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>ブービー賞</td>
+                        <td>月初～月末まで当選が無い方の中から抽選</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden-sm hidden-md hidden-lg">
+
+        <div class="col-xs-12 text-center">
+            <h1><b>遊びかた</b></h1>
+            <hr />
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_loginIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 1</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>ログイン</h3>
+                </div>
+                <div class="col-xs-12" style="margin: 0 0 30px -10px;">
+                    <div class="gc-info">
+                        <abbr rel="tooltip" title="初回のみ、簡単な登録が必要です。登録した日から毎日懸賞に参加できます。希望された方を除き、広告メールなどが配信されることはありません。同一人物による複数の登録はできません。">
+                            <span class="fa fa-info"></span>
+                        </abbr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_sevenIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 2</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>7つの数字を選んで<br /><span style="background-color: #A29B73; color: white; font-size: 0.5em; padding: 5px; vertical-align: middle;">PLAY</span>をクリック！</h3><br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_selectIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 3</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>気に入った広告を１つ選んでクリック！</h3><br />
+                </div>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <div class="row col-xs-12 text-center">
+                    <img src="/Data/htp_waitIcon.png" style="width: 75px;">
+                </div>
+                <div class="row2 col-xs-12">
+                    <h2><b>ステップ 4</b></h2>
+                </div>
+                <div class="row3 col-xs-12">
+                    <h3>スポンサー企業のページが開き<br />懸賞登録が完了</h3><br />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <h3>さあ、始めましょう!</h3>
+                <a href="#/login" ng-href="#/login"><button class="btn btn-lg bg-color green text-default">PLAY NOW!</button></a>
+                <br />
+                <br />
+                <p>
+                    すべての参加者は1日1度だけプレイすることができます。<br />違反行為は無効となりますので、ご了承ください。
+                </p>
+                <p>
+                    <a ng-href="/#/rules-and-regulations" href="/#/rules-and-regulations">詳しくはご利用規約（ルール）</a>をお読みください。
+                    <br />
+                </p>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #000;" width="90%">
+                <tr class="space">
+                    <td height="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <div class="row col-xs-12 text-center">
+                <br />
+                <h2><b>数字組み合わせ例</b></h2>
+                <hr />
+            </div>
+            <div class="row col-xs-12 text-center">
+                <img src="/Data/prizeNumDefJP.png" style="width: 500px; padding-bottom: 30px;">
+            </div>
+            <div class="row col-xs-12 text-center">
+                <h3 style="font-weight: bold;">デイリー当選内容</h3>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <table align="center" style="width: 500px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>等級</th>
+                        <th>一致した数字</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>1等</td>
+                        <td>6つの数字とスーパーナンバーが<br />一致した場合</td>
+                        <td>100万円</td>
+                    </tr>
+                    <tr>
+                        <td>2等</td>
+                        <td>6つの数字が一致した場合</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>3等</td>
+                        <td>5つの数字が一致した場合</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>4等</td>
+                        <td>4つの数字が一致した場合</td>
+                        <td>商品券500円分</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <hr />
+                <h3 style="font-weight: bold;">ダブルチャンス当選内容</h3>
+                <h6>※ダブルチャンスは普段ご協力して頂いてる方に対して日頃の感謝を込めて行っております</h6>
+            </div>
+            <div class="row col-xs-12 text-center">
+                <div style="width: 500px; margin: auto;">
+                    <div class="jpn-text mo-history-cs flex" style="width: 500px;">
+                        <div class=" mo-history-cs-text">ただいま準備中です</div>
+                    </div>
+                </div>
+                <table align="center" style="width: 500px">
+                    <colgroup>
+                        <col style="width: 25%">
+                        <col style="width: 50%">
+                        <col style="width: 25%">
+                    </colgroup>
+                    <tr>
+                        <th>賞</th>
+                        <th>抽選対象者</th>
+                        <th>賞金・賞品</th>
+                    </tr>
+                    <tr>
+                        <td>月間参加賞</td>
+                        <td>月に10回以上プレイした方の中から抽選</td>
+                        <td>10万円</td>
+                    </tr>
+                    <tr>
+                        <td>ロイヤル<br />ウィークエンダー賞</td>
+                        <td style="font-size: 0.95em;">1か月の間に週末8回以上プレイした方の中から抽選</td>
+                        <td>商品券20,000円分</td>
+                    </tr>
+                    <tr>
+                        <td>ブービー賞</td>
+                        <td>月初～月末まで当選が無い方の中から抽選</td>
+                        <td>商品券5,000円分</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("tr:odd").not(".space").css("background-color", "#E0DED5");
+        $("tr:even").not(".space").css("background-color", "#F0EFEB");
+    });
+</script>
+
+<script>$(function () { var i = $("[rel~=tooltip]"), t = !1, n = !1; i.bind("mouseenter", function () { var i, r; if (t = $(this), tip = t.attr("title"), n = $('<div id="tooltip"><\/div>'), !tip || tip == "") return !1; t.removeAttr("title"); n.css("opacity", 0).html(tip).appendTo("body"); i = function () { var i, r; $(window).width() < n.outerWidth() * 1.5 ? n.css("max-width", $(window).width() / 2) : n.css("max-width", 340); i = t.offset().left + t.outerWidth() / 2 - n.outerWidth() / 2; r = t.offset().top - n.outerHeight() - 20; i < 0 ? (i = t.offset().left + t.outerWidth() / 2 - 20, n.addClass("left")) : n.removeClass("left"); i + n.outerWidth() > $(window).width() ? (i = t.offset().left - n.outerWidth() + t.outerWidth() / 2 + 20, n.addClass("right")) : n.removeClass("right"); r < 0 ? (r = t.offset().top + t.outerHeight(), n.addClass("top")) : n.removeClass("top"); n.css({ left: i, top: r }).animate({ top: "+=10", opacity: 1 }, 50) }; i(); $(window).resize(i); r = function () { n.animate({ top: "-=10", opacity: 0 }, 50, function () { $(this).remove() }); t.attr("title", tip) }; t.bind("mouseleave", r); n.bind("click", r) }) });</script>

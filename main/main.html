@@ -1,0 +1,1394 @@
+<style>
+    /* Side Panel */
+    .cd-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        visibility: hidden;
+        -webkit-transition: visibility 0s 0.6s;
+        -moz-transition: visibility 0s 0.6s;
+        -o-transition: visibility 0s 0.6s;
+        transition: visibility 0s 0.6s;
+    }
+
+        .cd-panel::after {
+            /* overlay layer */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            cursor: pointer;
+            -webkit-transition: background 0.3s 0.3s;
+            -moz-transition: background 0.3s 0.3s;
+            -o-transition: background 0.3s 0.3s;
+            transition: background 0.3s 0.3s;
+        }
+
+        .cd-panel.is-visible {
+            visibility: visible;
+            -webkit-transition: visibility 0s 0s;
+            -moz-transition: visibility 0s 0s;
+            -o-transition: visibility 0s 0s;
+            transition: visibility 0s 0s;
+        }
+
+            .cd-panel.is-visible::after {
+                background: rgba(0, 0, 0, 0.6);
+                -webkit-transition: background 0.3s 0s;
+                -moz-transition: background 0.3s 0s;
+                -o-transition: background 0.3s 0s;
+                transition: background 0.3s 0s;
+            }
+
+            .cd-panel.is-visible .cd-panel-close::before {
+                -webkit-animation: cd-close-1 0.6s 0.3s;
+                -moz-animation: cd-close-1 0.6s 0.3s;
+                -o-animation: cd-close-1 0.6s 0.3s;
+                animation: cd-close-1 0.6s 0.3s;
+            }
+
+            .cd-panel.is-visible .cd-panel-close::after {
+                -webkit-animation: cd-close-2 0.6s 0.3s;
+                -moz-animation: cd-close-2 0.6s 0.3s;
+                -o-animation: cd-close-2 0.6s 0.3s;
+                animation: cd-close-2 0.6s 0.3s;
+            }
+
+    @-webkit-keyframes cd-close-1 {
+        0%, 50% {
+            -webkit-transform: rotate(0);
+        }
+
+        100% {
+            -webkit-transform: rotate(45deg);
+        }
+    }
+
+    @-moz-keyframes cd-close-1 {
+        0%, 50% {
+            -moz-transform: rotate(0);
+        }
+
+        100% {
+            -moz-transform: rotate(45deg);
+        }
+    }
+
+    @keyframes cd-close-1 {
+        0%, 50% {
+            -webkit-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            -o-transform: rotate(0);
+            transform: rotate(0);
+        }
+
+        100% {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+
+    @-webkit-keyframes cd-close-2 {
+        0%, 50% {
+            -webkit-transform: rotate(0);
+        }
+
+        100% {
+            -webkit-transform: rotate(-45deg);
+        }
+    }
+
+    @-moz-keyframes cd-close-2 {
+        0%, 50% {
+            -moz-transform: rotate(0);
+        }
+
+        100% {
+            -moz-transform: rotate(-45deg);
+        }
+    }
+
+    @keyframes cd-close-2 {
+        0%, 50% {
+            -webkit-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            -o-transform: rotate(0);
+            transform: rotate(0);
+        }
+
+        100% {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+    }
+
+    .cd-panel-header {
+        position: fixed;
+        width: 90%;
+        height: 52px;
+        line-height: 52px;
+        background: rgba(255, 255, 255, 0.96);
+        z-index: 2;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+        -webkit-transition: top 0.3s 0s;
+        -moz-transition: top 0.3s 0s;
+        -o-transition: top 0.3s 0s;
+        transition: top 0.3s 0s;
+    }
+
+        .cd-panel-header h1 {
+            font-weight: bold;
+            color: #89ba2c;
+            padding-left: 5%;
+        }
+
+    .from-right .cd-panel-header, .from-left .cd-panel-header {
+        top: -52px;
+    }
+
+    .from-right .cd-panel-header {
+        right: 0;
+    }
+
+    .from-left .cd-panel-header {
+        left: 0;
+    }
+
+    .is-visible .cd-panel-header {
+        top: 0;
+        -webkit-transition: top 0.3s 0.3s;
+        -moz-transition: top 0.3s 0.3s;
+        -o-transition: top 0.3s 0.3s;
+        transition: top 0.3s 0.3s;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .cd-panel-header {
+            width: 620px;
+        }
+    }
+
+    /*@media only screen and (min-width: 1170px) {
+      .cd-panel-header {
+        width: 50%;
+      }
+    }*/
+
+    .cd-panel-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 60px;
+        /* image replacement */
+        display: inline-block;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+    }
+
+        .cd-panel-close::before, .cd-panel-close::after {
+            /* close icon created in CSS */
+            position: absolute;
+            top: 22px;
+            left: 20px;
+            height: 3px;
+            width: 20px;
+            content: "";
+            background-color: #424f5c;
+            /* this fixes a bug where pseudo elements are slightly off position */
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .cd-panel-close::before {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .cd-panel-close::after {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+    .no-touch .cd-panel-close:hover {
+        background-color: #424f5c;
+    }
+
+        .no-touch .cd-panel-close:hover::before, .no-touch .cd-panel-close:hover::after {
+            background-color: #ffffff;
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            -o-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: 0.3s;
+            -moz-transition-duration: 0.3s;
+            -o-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .no-touch .cd-panel-close:hover::before {
+            -webkit-transform: rotate(220deg);
+            -moz-transform: rotate(220deg);
+            -ms-transform: rotate(220deg);
+            -o-transform: rotate(220deg);
+            transform: rotate(220deg);
+        }
+
+        .no-touch .cd-panel-close:hover::after {
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+    .cd-panel-container {
+        position: fixed;
+        width: 90%;
+        height: 100%;
+        top: 0;
+        background: #313131;
+        color: #9d9d9d;
+        z-index: 1;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-delay: 0.3s;
+        -moz-transition-delay: 0.3s;
+        -o-transition-delay: 0.3s;
+        transition-delay: 0.3s;
+    }
+
+    .from-right .cd-panel-container {
+        right: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        -moz-transform: translate3d(100%, 0, 0);
+        -ms-transform: translate3d(100%, 0, 0);
+        -o-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    .from-left .cd-panel-container {
+        left: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        -moz-transform: translate3d(-100%, 0, 0);
+        -ms-transform: translate3d(-100%, 0, 0);
+        -o-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    .is-visible .cd-panel-container {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .cd-panel-container {
+            width: 620px;
+        }
+    }
+
+    /*@media only screen and (min-width: 1170px) {
+      .cd-panel-container {
+        width: 50%;
+      }
+    }*/
+
+    .cd-panel-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 70px 5%;
+        overflow: auto;
+        /* smooth scrolling on touch devices */
+        -webkit-overflow-scrolling: touch;
+    }
+</style>
+
+<style>
+    /* Default View */
+    .sb-trigger {
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        display: block;
+        width: 60px;
+        height: 60px;
+        background-color: #313131;
+        z-index: 150;
+        border-radius: 100%;
+    }
+
+    .sb-tri:hover {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
+    a.sb-trigger:hover {
+        text-decoration: none;
+    }
+
+    .flex {
+        display: -webkit-box; /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+        display: -moz-box; /* OLD: Firefox (buggy) */
+        display: -ms-flexbox; /* MID: IE 10 */
+        display: -webkit-flex; /* NEW, Chrome 21+ */
+        display: flex; /* NEW: Opera 12.1, Firefox 22+ */
+        -webkit-box-align: center;
+        -moz-box-align: center; /* OLD… */
+        -ms-flex-align: center; /* You know the drill now… */
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .hero-bg {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        max-height: 65vh;
+    }
+
+    .vision-one {
+        background: url('/Data/vision.green.jpg') no-repeat center center;
+        background-size: cover;
+    }
+
+    .vision-two {
+        background: url('/Data/vision.fishing.jpg') no-repeat center center;
+        background-size: cover;
+    }
+
+    .hero-text-bg {
+        width: 100%;
+        height: 215px;
+    }
+
+    .hero-text {
+        max-width: 80%;
+        margin: auto;
+        color: white;
+        text-shadow: rgba(0,0,0,.75) 0 3px 5px;
+    }
+
+    .hero-img {
+        width: 100%;
+        height: 65vh !important;
+    }
+
+    .hero-header {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 1.1;
+        margin: 20px 0 10px 0;
+    }
+
+    .hero-subhead {
+        font-weight: bold;
+        font-size: 1em;
+        line-height: 1.2;
+        margin: 20px 0 10px 0;
+        max-width: 940px;
+    }
+
+    @media only screen and (min-width: 670px) {
+        .hero-text-bg {
+            height: 250px;
+        }
+
+        .hero-header {
+            font-size: 2.625em;
+        }
+
+        .hero-subhead {
+            font-size: 1.2em;
+            line-height: 1.2;
+        }
+    }
+
+    @media only screen and (min-width: 870px) {
+        .hero-text-bg {
+            height: 275px;
+        }
+
+        .hero-header {
+            font-size: 3em;
+            line-height: 1.125;
+        }
+
+        .hero-subhead {
+            font-size: 1.5em;
+            line-height: 1.1;
+        }
+    }
+
+    @media only screen and (min-width: 1150px) {
+        .hero-text-bg {
+            height: 325px;
+        }
+
+        .hero-header {
+            font-size: 4em;
+            line-height: 1.125;
+        }
+
+        .hero-subhead {
+            font-size: 1.8em;
+            line-height: 1.1;
+        }
+    }
+
+    #about-section-img {
+        width: 300px;
+        height: 300px;
+        float: left;
+        margin: 40px 40px 40px 0;
+        border-radius: 50%;
+        -webkit-shape-outside: circle();
+        shape-outside: circle();
+        background: #fff url('/Data/gotchamp_logo_white.png') 25px 20px/250px 250px no-repeat;
+        box-shadow: 4px 5px 10px #aaa;
+    }
+
+    .main-section-wrap {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .section-head {
+        width: 300px;
+        border-bottom: 2px solid #313131;
+        margin-bottom: 20px;
+    }
+
+        .section-head p {
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+    .feature-grid-sys img {
+        width: 100%;
+        height: auto;
+    }
+
+    .feature-item {
+        padding: 10px 10px 20px;
+    }
+
+    .news-item {
+        background-color: #ddd;
+        color: black;
+        padding: 20px;
+    }
+
+    article.clients {
+        float: left;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 235px;
+        height: 173px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #4d4d4d;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+        article.clients:hover, article.clients:focus {
+            border: none !important;
+        }
+
+        article.clients span {
+            display: inline-block;
+            height: 100%;
+            width: 1px;
+            vertical-align: middle;
+        }
+
+        article.clients img {
+            width: auto;
+            max-height: 80%;
+        }
+</style>
+
+<style>
+    /* Logged In View */
+    @media only screen and (max-width: 991px) {
+        .gc-dashboard {
+            padding: 0;
+        }
+    }
+
+    .player-stats {
+        background-color: black;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .play-completed-bg {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(49, 49, 49, 0.8);
+        z-index: 10;
+    }
+
+    .play-completed-text {
+        margin: auto;
+        color: white;
+        font-size: 2em;
+        line-height: 1.25em;
+    }
+
+    .gc-loggedInBG {
+        min-height: 100%;
+        min-width: 1024px;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: url('/Data/background.jpg') no-repeat center fixed;
+        background-size: cover;
+    }
+
+    .game-counters {
+        position: relative;
+        background-color: black;
+        margin: 0 auto 20px;
+        padding: 10px 0 20px 0;
+        color: white;
+        max-width: 500px;
+    }
+
+    .mo-history-cs {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        top: 0;
+        z-index: 10;
+    }
+
+    .mo-history-cs-text {
+        color: white;
+        font-size: 2em;
+        margin: auto;
+    }
+
+    .mo-history {
+        width: 80%;
+        margin: auto;
+    }
+
+    .mo-hist-row {
+        line-height: 25px;
+        margin: 5px 0;
+    }
+
+    .mo-hist-text {
+        display: inline-block;
+        margin: 0 10px 0 0;
+    }
+
+    .gc-info abbr.mo-hist-info {
+        border: solid #eee 2px;
+        line-height: 19px;
+    }
+
+    .progress {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        margin: 0 0 20px 0;
+    }
+
+    .progress-bar {
+        background-color: #648A4B;
+        border-radius: 10px;
+        min-width: 10px;
+    }
+</style>
+
+<style type="text/css">
+    /* Original CSS */
+    .text-center .btn {
+        min-width: 180px;
+        margin-top: 10px;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    .super-border {
+        border: 2px solid #fff !important;
+    }
+
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+        .mn-width {
+            width: 45px;
+        }
+    }
+
+    .combination-number {
+        padding: 14px;
+        font-size: 1.5em;
+        margin: auto;
+        width: 55px;
+        height: 55px;
+        display: inline-block;
+    }
+
+    @media (min-width: 1200px) {
+        .excess {
+            width: 100px;
+            margin-top: -5px;
+            height: 110px;
+            border-style: solid;
+            border-width: 0 560px 100px 0;
+            border-color: transparent #B9B7A8 transparent transparent;
+            line-height: 0;
+            _border-color: #000000 #ffffff #000000 #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .excess {
+            width: 100px;
+            margin-top: -5px;
+            height: 110px;
+            border-style: solid;
+            border-width: 0 460px 100px 0;
+            border-color: transparent #B9B7A8 transparent transparent;
+            line-height: 0;
+            _border-color: #000000 #ffffff #000000 #000000;
+            _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        div.banner::before {
+            content: "a";
+            z-index: 0;
+            display: block;
+            top: -1000px;
+            /*padding-bottom: 100px;*/
+            position: absolute;
+            height: 1000px;
+            width: 95%;
+            background-color: #B9B7A8;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .prev-overflow {
+            overflow-y: scroll;
+            max-height: 110px;
+        }
+    }
+
+    .gotchamp-logo-banner::before {
+        content: "a";
+        position: absolute;
+        bottom: -31px;
+        left: -1px;
+        width: 0;
+        height: 0;
+        /*background-color: red;*/
+        border-style: solid;
+        border-width: 0 30px 30px 0;
+        border-color: transparent #000 transparent transparent;
+    }
+
+    .gotchamp-logo-banner::after {
+        content: "a";
+        position: absolute;
+        bottom: -30px;
+        right: -1px;
+        width: 0;
+        height: 0;
+        /*background-color: red;*/
+        border-style: solid;
+        border-width: 30px 30px 0 0;
+        border-color: #000000 transparent transparent transparent;
+    }
+
+    .no-border {
+        border: none;
+    }
+
+    table {
+    }
+
+    .goodluck-num {
+        box-shadow: none;
+        height: 145px;
+        -webkit-border-radius: 10%;
+        border-radius: 10%;
+        background-color: rgb(38, 151, 247);
+    }
+
+        .goodluck-num h1 {
+            margin-top: 21px;
+        }
+
+    .border {
+        border: 4px solid white;
+    }
+
+    .round-edge {
+        border-radius: 5px;
+    }
+
+    .prev-table tr td {
+        padding: 8px;
+    }
+
+    .prev-table tr:nth-child(2n+2) {
+        background-color: #e8ecef;
+    }
+
+    .winning-combination {
+        display: none;
+    }
+
+        .winning-combination.active {
+            display: block;
+        }
+
+    .winning-prev span,
+    .winning-next span {
+        font-size: 24px !important;
+        cursor: pointer;
+        color: white;
+    }
+</style>
+<div ng-include="'Client/src/app/components/navbar/navbar.html'"></div>
+<div class="container-fluid" ng-init="loadCombination(); checkPlayed(); mainInit()" style="padding: 0;">
+    <!-- Default View (Panel & Vision) -->
+    <div ng-hide="isLoggedIn">
+        <!-- Side Panel Trigger -->
+        <a href="javascript:;" class="cd-btn sb-trigger text-center jpn-text" style="color: #fff; border: 3px solid #f3f3f4;">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="font-size: 2em; line-height: 54px;"></span>
+        </a>
+        <!-- Side Panel Begin -->
+        <div class="cd-panel from-right" style="z-index: 300;background: rgba(0, 0, 0, 0.6);">
+            <header class="cd-panel-header">
+                <p style="padding-left: 5%; font-size: 1.2em; font-weight: bold;">簡単なクリックで支援しよう！</p>
+                <a href="javascript:;" class="cd-panel-close" title="閉じる">閉じる</a>
+            </header>
+
+            <div class="cd-panel-container">
+                <div class="cd-panel-content text-center">
+                    <div class="jpn-text">
+                        <p style="margin: auto;">
+                            ただいま登録キャンペーン開催中！
+                            <br>
+                            登録をして、スペシャルキャンペーンに参加しよう。
+                            <br>
+                            最新情報は毎週更新されますのでお見逃しなく！
+                        </p>
+                        <a href="#/reg-campaign">
+                            <button class="btn btn-lg bg-color gray text-default" style="border-radius: 4px;">詳しい情報はこちらへ&nbsp;&nbsp;<span class="fa fa-long-arrow-right"></span></button>
+                        </a>
+                        <div style="margin-top: 10px;">
+                            <a href="#/en/reg-campaign" class="text-sm" style="color:#9d9d9d;">For information in English, click here.</a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 text-center">
+                        <table align="center" style="font-size: 0; line-height: 0; border-bottom: 1px dotted #9d9d9d; width: 80%; margin: 20px auto 25px;">
+                            <tbody><tr class="space"><td height="1">&nbsp;</td></tr></tbody>
+                        </table>
+                    </div>
+
+                    <div class="jpn-text">
+                        <h3><b>毎日プレイして<br>最高当せん額</b></h3>
+                        <p class="h1" style="font-size: 4em; font-weight: bold; margin: 10px 0;">100万円</p>
+                        <p class="h3" style="margin: 10px 0;"><b>が当たるチャンス！</b></p>
+                        <p class="h6">※ ゲームを課金が必要な内容は一切含まれておりません。</p>
+                    </div>
+
+                    <!-- Previous Winning Numbers -->
+                    <div class="panel" style="max-width: 500px; margin: 20px auto 0;">
+                        <div style="background-color:#313131; color: inherit; border-bottom: 1px solid #9d9d9d;" class="panel-heading">
+                            <p class="panel-title h4"><span class="jpn-text">前回の当選ナンバー</span></p>
+                        </div>
+                        <div style="background-color:#4b4b4b" class="panel-body bg-color">
+                            <div class="text-white" ng-show="previousCombination.length <= 0"><h4>No previous combinations yet</h4></div>
+                            <div class="winning-combinations" ng-show="previousCombination.length > 0">
+                                <div ng-repeat="prevComb in previousCombination | orderBy: '!gameNum'" class="item winning-combination" ng-class="{'active' : $first}" index="{{$index}}">
+                                    <div class="text-color white">
+                                        <div class="text-center">
+                                            <table style="width:85%;" align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td ng-repeat="combinationNum in prevComb.combination track by $index" style="padding: 8px 0;">
+                                                            <div class="number super-border" style="width:55px; height:55px; padding:14px; background-color:black; color:white; margin: auto; cursor:default;" ng-class="{'btn-primary' : $index == 6}">
+                                                                <label>{{combinationNum}}</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p></p>
+                                        <div class="text-sm text-center text-white">ゲーム No. {{prevComb.gameNum}} - {{prevComb.date | date: 'yyyy.MM.dd'}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="winning-prev" ng-hide="previousCombination.length <= 0">
+                            <span class="glyphicon glyphicon-chevron-left" ng-click="altIndex(1)" ng-hide="index >= previousCombination.length - 1 ? true: false"></span>
+                        </div>
+                        <div class="winning-next" ng-hide="previousCombination.length <= 0">
+                            <span class="glyphicon glyphicon-chevron-right" ng-click="altIndex(-1)" ng-hide="index == 0 ? true: false"></span>
+                        </div>
+                    </div>
+
+                    <!-- Registration / Login Buttons-->
+                    <div class="text-center jpn-text" style="margin: 40px 0 30px;">
+                        <a href="#/register" ng-href="#/register">
+                            <button class="btn btn-lg bg-color btn-primary text-default" style="border-radius: 4px; min-width: 140px; margin: 0 7px;">会員登録</button>
+                        </a>
+                        <a href="#/login" ng-href="#/login">
+                            <button class="btn btn-lg bg-color green text-default" style="border-radius: 4px; min-width: 140px; margin: 0 7px;">ログイン</button>
+                        </a>
+                    </div>
+
+                </div> <!-- cd-panel-content -->
+            </div> <!-- cd-panel-container -->
+        </div> <!-- cd-panel -->
+        <!-- Side Panel End -->
+        <!-- Vision Carousel -->
+        <div id="visionCarousel" class="carousel slide" data-ride="carousel" style="margin: -33px 0 15px;">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#visionCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#visionCarousel" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox" style="max-height: 65vh; ">
+                <div class="item active">
+                    <div class="hero-bg flex vision-one">
+                        <div class="hero-text-bg flex" style="background: rgba(22, 82, 3, 0.4);">
+                            <div class="hero-text jpn-text">
+                                <p class="hero-header">ガチャンプへようこそ！</p>
+                                <p class="hero-subhead">【ついに2016年6月1日（水）からガチャンプが開始されました！！】<br>登録キャンペーン実施中!!</p>
+                                <p class="hero-subhead">懸賞に参加すると、同時にボランティア活動にも参加できちゃう！！<br>ビッグな賞金や豪華商品が当たるチャンス！<br>あなたの１クリックで世界にハッピーを届けよう</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/Data/0-000000.png" alt="Image 1" class="hero-img">
+                </div>
+                <div class="item">
+                    <div class="hero-bg flex vision-two">
+                        <div class="hero-text-bg flex" style="background: rgba(100,74,101,.6);">
+                            <div class="hero-text jpn-text">
+                                <p class="hero-header">ガチャンプで一日一善</p>
+                                <p class="hero-subhead">地球環境を守る事業をサポートしながら、様々な困窮を（天災による被災地支援・子供たちの教育整備・ワクチン不足など）サポートします。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/Data/0-000000.png" alt="Image 2" class="hero-img">
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" data-target="#visionCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" data-target="#visionCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Vision Carousel End -->
+        <!-- Countdown Timer -->
+        <div class="row text-center" style="max-width: 500px; margin: 0 auto 25px;">
+            <h3 class="jpn-text"><b>次の抽選まで残り</b></h3>
+            <div class="row text-center">
+                <div class="col-xs-2 col-xs-offset-3">
+                    <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="hours"><b></b></div>
+                    <div><b>HRS</b></div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="minutes"><b></b></div>
+                    <div><b>MIN</b></div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="seconds"><b></b></div>
+                    <div><b>SEC</b></div>
+                </div>
+            </div>
+            <h6 class="jpn-text ng-binding">今日のゲームは {{cutOffReadable}} で締切りとなります</h6>
+            <!-- <h6 class="jpn-text">ただいまテスト期間中につき、試しにプレイしてみてください<br>※テスト期間中は当選しても無効です</h6> -->
+        </div>
+
+        <!-- Default View (Highlights) -->
+        <!--<div class="row text-center hidden-xs hidden-sm" style="margin: 0;">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size: 2em; line-height: 80px;"></span>
+        </div>-->
+        <!-- About -->
+        <div class="row jpn-text" style="background-color: #eee; color: #000; margin: 0; padding: 10px 0 20px;">
+            <div class="main-section-wrap">
+                <div class="support-head text-center"><p class="h3" style="font-weight: bold;">ガチャンプってなに？</p></div>
+                <div id="about-section-text">
+                    <div id="about-section-img">
+                    </div>
+                    <p class="h4" style="padding-top: 30px;"><strong>ガチャンプのはじまり</strong><p>
+                    <p>ガチャンプは世界と私たち個人をつなぐ新しいスタイルの懸賞サイトです。広大な緑や水に恵まれた環境における「エネルギーを生み出す環境や技術もあるのに道具が買えない……。」そんなジレンマを解消すれば、日本や世界はもっと良くなる。ドイツから日本にやって来たハンスは、この問題をどう解決すべきか仲間たちと日々模索していました。</p>
+                    <p>そしてある日、懸賞に参加することで、参加者は賞金が当たるチャンスを得ると同時に、参加の“１クリック”が環境再生エネルギーの支援や世界中のボランティア支援につながり、企業は商品の広告ができる。そんな画期的なシステムを思いつきました。</p>
+                    <p>ガチャンプは世界中で活躍する信頼できるボランティア団体と協力し、私たちの“１クリック”で実現された活動についても随時サイトで紹介していきます！</p>
+                    <br />
+                    <p class="h4"><strong>ガチャンプの創設者ってどんな人？</strong><p>
+                    <p>ハンス・ヘニング・ユーデック（Hans-Henning Judek）は日本で35年以上暮らしている、日本が大好きなドイツ人。再生可能エネルギー（太陽光、バイオマス、バイオ燃料）の分野においてアジア諸国で活躍しています。東日本大震災の際には被災地である宮城県南三陸町に「DoCoDeMo Eco Car」というカーシェアリングの車両提供システムを提供しました。</p>
+                    <p>2008年、アジア・クリーン・エネルギーフォーラム（ACEF）においてトップイノベーション賞を受賞。アジア開発銀行の公認コンサルタントであるとともに、ACEFの正規の議長をも務めています。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div class="row jpn-text" style="background-color: #ddd; color: #000; margin: 0; padding: 10px 0 20px;">
+            <div class="text-center" style="max-width: 1000px; margin: auto;">
+                <div class="support-head"><p class="h3" style="font-weight: bold;">懸賞へ参加する方法</p></div>
+                <table class="support-table" align="center" style="font-size: 1.5em; border: 30px solid transparent;">
+                    <colgroup>
+                        <col style="width: 90px;">
+                        <col style="width: 150px;">
+                        <col style="width: auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr style="height: 90px;">
+                            <td><img src="/Data/htp_loginIcon.png" style="width: 75px;"></td>
+                            <td style="font-weight: bold;">ステップ 1</td>
+                            <td class="text-left">ログイン<div class="gc-info"><abbr rel="tooltip" title="初回のみ、簡単な登録が必要です。登録した日から毎日懸賞に参加できます。希望された方を除き、広告メールなどが配信されることはありません。同一人物による複数の登録はできません。"><span class="fa fa-info"></span></abbr></div>　－　<span style="background-color: #648A4B; color: white; font-size: 0.5em; padding: 8px; vertical-align: middle;">ログイン</span> 又は <span class="fa fa-chevron-circle-left" style="font-size: 1.5em; vertical-align: middle;"></span> をクリックしてください</td>
+                        </tr>
+                        <tr style="height: 90px;">
+                            <td><img src="/Data/htp_sevenIcon.png" style="width: 75px;"></td>
+                            <td style="font-weight: bold;">ステップ 2</td>
+                            <td class="text-left">7つの数字を選んで <span style="background-color: #A29B73; color: white; font-size: 0.5em; padding: 8px; vertical-align: middle;">PLAY</span> をクリック！</td>
+                        </tr>
+                        <tr style="height: 90px;">
+                            <td><img src="/Data/htp_selectIcon.png" style="width: 75px;"></td>
+                            <td style="font-weight: bold;">ステップ 3</td>
+                            <td class="text-left">気に入った広告を１つ選んでクリック！</td>
+                        </tr>
+                        <tr style="height: 90px;">
+                            <td><img src="/Data/htp_waitIcon.png" style="width: 75px;"></td>
+                            <td style="font-weight: bold;">ステップ 4</td>
+                            <td class="text-left">スポンサー企業のページが開き、懸賞登録が完了</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <a href="javascript:;" class="cd-btn">
+                        <button class="btn btn-lg bg-color gray text-default" style="border-radius: 4px; min-width: 140px; margin: 0 0 15px;">詳しく見る</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project / Charity Highlight -->
+        <div class="row main-section-wrap jpn-text" style="margin-top: 20px;">
+            <div class="section-head"><p class="h4" style="margin-bottom: 0;font-weight: bold;">活動ハイライト</p></div>
+            <p>ガチャンプ、我々はほんの小さな事が大きな変化を生むことができ、そして環境や社会にやさしい活動の発展及び地域社会に対する支援などを行える事を信じております。もし私どもが行っているプロジェクトやチャリティについてご興味がありましたら、以下のリンクをクリックしてください。</p>
+            <div class="feature-grid-sys">
+                <div class="col-sm-6 feature-item">
+                    <a href="#/projects/odawara">
+                        <img src="/Data/odawara_banner.png" alt="Odawara" title="小水力発電復活　－　小田原市">
+                    </a>
+                </div>
+                <div class="col-sm-6 feature-item">
+                    <a href="http://www.gotchamp.com/proj/jpn-tacloban/" target="_blank">
+                        <img src="/Data/CSR/683610_Tacloban Banner.png" alt="Tacloban">
+                    </a>
+                </div>
+                <div class="col-sm-6 feature-item">
+                    <a href="http://www.gotchamp.com/proj/lake-victoria" target="_blank">
+                        <img src="/Data/CSR/149765_lake victoria - water hyacinth banner.png" alt="Lake Victoria">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest News -->
+        <div class="row main-section-wrap jpn-text">
+            <div class="section-head"><p class="h4" style="margin-bottom: 0;font-weight: bold;">最新のニュース</p></div>
+            <div class="feature-grid-sys">
+                <div class="col-sm-6 feature-item">
+                    <div class="news-item text-center">
+                        <p class="h4">tvk NEWS ハーバーにガチャンプのハンス・ヘニング・ユーデックがフィーチャーされました！</p>
+                        <a href="https://youtu.be/Dk9FIiTC7hU" target="_blank" style="color: black;">ここをクリックすると、YouTubeで動画がご覧いただけます。</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-item">
+                    <div class="news-item text-center">
+                        <p class="h4">第１弾ダブルチャンス賞品発表！！<br />バリ島２泊３日旅行</p>
+                        <a href="#/reg-campaign" target="_blank" style="color: black;">詳しく見る</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 feature-item">
+                    <div class="news-item text-center">
+                        <p class="h4">Yokohama Seasider （横浜シーサイダー）の2015年12月号にガチャンプがフィーチャーされました！</p>
+                        <a href="http://www.yokohamaseasider.com/ja/gochamp/" target="_blank" style="color: black;">ここをクリックすると、記事がご覧いただけます。</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends of Gotchamp -->
+        <div class="row main-section-wrap jpn-text">
+            <div class="section-head"><p class="h4" style="margin-bottom: 0;font-weight: bold;">ガチャンプの友達</p></div>
+            <p style="margin-bottom: 20px;">多くの人々、企業や組織は、将来に向け建設的な変化を生み出しており、我々と同じようなビジョンを共有できる方々を探し続けています。このように繋がった我々の「同志」をここにご紹介致しますので是非クリックしてみてください。</p>
+            <div class="feature-grid-sys">
+                <article class="clients">
+                    <span></span>
+                    <a href="http://www.fukushimafund.or.jp/" title="" data-toggle="popover" data-placement="auto top" data-trigger="hover" data-content="一般財団法人ふくしま自然エネルギー基金は、東日本大震災、東京電力福島第一原発事故の惨禍からの復興、未来創造に関する事業を行うことを目的として、福島県民主体の自然エネルギー事業、復興関連事業を支援するとともに、原発に頼らない、自然調和・持続・循環型社会モデルを具現化し、世界に発信します。" data-original-title="ふくしま自然エネルギー基金">
+                        <img src="/Data/gc_friends_fukushimakikin.png" alt="logo">
+                    </a>
+                </article>
+                <article class="clients">
+                    <span></span>
+                    <a href="http://aipower.co.jp/" title="" data-toggle="popover" data-placement="auto top" data-trigger="hover" data-content="原発に依存しない再生可能エネルギーによる社会づくりを目指して会津地域の有志が集い2013年8月1 日に設立いたしました。 地域の資本と地域の資源を活用し、安全で持続可能な再生可能エネルギーの普及とその事業をおこない、多様な地域分散型エネルギーの創造と、その提供を通じて地域の経済や地域文化の自立に向けた地域社会の創造を事業とします。" data-original-title="会津電力株式会社">
+                        <img src="/Data/gc_friends_aipower.png" alt="logo">
+                    </a>
+                </article>
+                <article class="clients">
+                    <span></span>
+                    <a href="http://www.hamakei.com/" title="" data-toggle="popover" data-placement="auto top" data-trigger="hover" data-content="ヨコハマ経済新聞は横浜都心臨海部のビジネス＆カルチャーニュースをお届けするインターネットの情報配信サービスです。" data-original-title="ヨコハマ経済新聞">
+                        <img src="/Data/gc_friends_yokokeizai.png" alt="logo">
+                    </a>
+                </article>
+                <article class="clients">
+                    <span></span>
+                    <a href="http://www.seisagroup.jp/" title="" data-toggle="popover" data-placement="auto top" data-trigger="hover" data-content="星槎はその40年の歴史の中で、「社会に必要とされること」を教育・福祉・医療の分野で創り続けてきました。その星槎において、高校部門の中核をなす星槎国際高等学校は、それまでに蓄積されたノウハウすべてを投入し、全く新しいタイプの通信制高校として1999年に開校された広域通信制高校です。" data-original-title="星槎グループ">
+                        <img src="/Data/gc_friends_seisa.png" alt="logo">
+                    </a>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logged In View -->
+    <div class="ng-hide" ng-show="isLoggedIn">
+        <div class="gc-loggedInBG"></div>
+        <div class="row" style="max-width: 990px; margin: auto;">
+            <!-- Dashboard -->
+            <div class="col-md-6 gc-dashboard text-center">
+                <!-- Countdown Timer -->
+                <div class="row text-center" style="max-width: 500px; margin: 15px auto 25px;">
+                    <h3 class="jpn-text"><b>次の抽選まで残り</b></h3>
+                    <div class="row text-center">
+                        <div class="col-xs-2 col-xs-offset-3">
+                            <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="hours2"><b></b></div>
+                            <div><b>HRS</b></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="minutes2"><b></b></div>
+                            <div><b>MIN</b></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="circle-num bg-color black text-white" style="border: 2px solid; margin: auto; float:none;" id="seconds2"><b></b></div>
+                            <div><b>SEC</b></div>
+                        </div>
+                    </div>
+                    <h6 class="jpn-text ng-binding">今日のゲームは {{cutOffReadable}} で締切りとなります</h6>
+                    <!-- <h6 class="jpn-text">ただいまテスト期間中につき、試しにプレイしてみてください<br>※テスト期間中は当選しても無効です</h6> -->
+                </div>
+
+                <!-- Previous Winning Numbers -->
+                <div class="panel" style="max-width: 500px; margin: 0 auto 20px;">
+                    <div style="background-color:#313131; color: #fff; border-bottom: 1px solid #9d9d9d;" class="panel-heading">
+                        <p class="panel-title h4"><span class="jpn-text">前回の当選ナンバー</span></p>
+                    </div>
+                    <div style="background-color:#4b4b4b" class="panel-body bg-color">
+                        <div class="text-white" ng-show="previousCombination.length <= 0"><h4>No previous combinations yet</h4></div>
+                        <div class="winning-combinations" ng-show="previousCombination.length > 0">
+                            <div ng-repeat="prevComb in previousCombination | orderBy: '!gameNum'" class="item winning-combination" ng-class="{'active' : $first}" index="{{$index}}">
+                                <div class="text-color white">
+                                    <div class="text-center">
+                                        <table style="width:85%;" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td ng-repeat="combinationNum in prevComb.combination track by $index" style="padding: 8px 0;">
+                                                        <div class="number super-border" style="width:55px; height:55px; padding:14px; background-color:black; color:white; margin: auto; cursor:default;" ng-class="{'btn-primary' : $index == 6}">
+                                                            <label>{{combinationNum}}</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                    <div class="text-sm text-center text-white">ゲーム No. {{prevComb.gameNum}} - {{prevComb.date | date: 'yyyy.MM.dd'}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="winning-prev" ng-hide="previousCombination.length <= 0">
+                        <span class="glyphicon glyphicon-chevron-left" ng-click="altIndex(1)" ng-hide="index >= previousCombination.length - 1 ? true: false"></span>
+                    </div>
+                    <div class="winning-next" ng-hide="previousCombination.length <= 0">
+                        <span class="glyphicon glyphicon-chevron-right" ng-click="altIndex(-1)" ng-hide="index == 0 ? true: false"></span>
+                    </div>
+                </div>
+
+                <!-- Player Statistics -->
+                <div class="player-stats text-center" style="max-width: 500px; margin: 0 auto; padding-bottom: 10px;">
+                    <p class="jpn-text h4" style="font-size: 15px; font-weight: bold">前回選んだナンバー</p>
+                    <div class="jpn-text" ng-hide="hasData"><h3>{{latestCombination}}</h3></div>
+                    <div ng-show="hasData">
+                        <table class="" width="80%" align="center">
+                            <tr>
+                                <td ng-repeat="number in latestCombination.breakDownedNumbers" style="padding: 8px 0 !important;">
+                                    <div class="combination-number number super-border" ng-class="{'btn-primary' : $index == 6}">{{number}}</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr style="width: 80%; margin: 30px auto 0;">
+                </div>
+                <div class="game-counters">
+                    <div class="jpn-text mo-history-cs flex">
+                        <div class="mo-history-cs-text">ただいま準備中です</div>
+                    </div>
+                    <div class="jpn-text mo-history">
+                        <p class="h4" style="font-size: 15px; font-weight: bold; margin-bottom: 20px;">今月のヒストリー</p>
+                        <div class="text-left">
+                            <div class="mo-hist-row">
+                                <div class="mo-hist-text">今月プレイした回数： <span ng-class="{'text-success' : monthly >= 10, 'text-danger' : monthly < 10}">{{monthly}}</span> / 10</div>
+                                <div class="gc-info" style="margin-top: -1px;">
+                                    <abbr class="mo-hist-info" rel="tooltip" title="月に10回以上プレイしたプレイヤーは月間参加賞が当たるチャンス！">
+                                        <span class="fa fa-info"></span>
+                                    </abbr>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: calc(100% * ({{monthly}} / 10))">
+                                    <span class="sr-only">{{monthly}} out of 10 complete</span>
+                                </div>
+                            </div>
+                            <div class="mo-hist-row">
+                                <div class="mo-hist-text">週末プレイした回数： <span ng-class="{'text-success' : weekends >= 8, 'text-danger' : weekends < 8}">{{weekends}}</span> / 8</div>
+                                <div class="gc-info" style="margin-top: -1px;">
+                                    <abbr class="mo-hist-info" rel="tooltip" title="週末に8回以上プレイしたプレイヤーはロイヤルウィークエンダー賞が当たるチャンス！">
+                                        <span class="fa fa-info"></span>
+                                    </abbr>
+                                </div>
+                            </div>
+                            <div class="progress" style="width: 80%;">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: calc(100% * ({{weekends}} / 10))">
+                                    <span class="sr-only">{{weekends}} out of 8 complete</span>
+                                </div>
+                            </div>
+                            <!-- <div class="text" ng-show="hasWon">今月はまだ当選していません。</div>
+                            <div class="text" ng-show="!hasWon">今月の当選回数。</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number Selection -->
+            <div class="col-md-6 banner" style="max-width: 520px; margin: auto;">
+                <div class="row">
+                    <div class="play-completed-bg flex ng-hide" ng-show="isLoggedIn && isPlayed">
+                        <div class="play-completed-text jpn-text">本日はクリック済です。<br>明日もお待ちしています！</div>
+                    </div>
+                    <div class="col-md-12 text-default bg-color black gotchamp-logo-banner">
+                        <div class="text-center" style="padding: 20px;">
+                            <img src="/Data/gotchamp_word_no.png" width="75%">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card bg-color gold text-center">
+                            <div>
+                                <br />
+                                <table align="center">
+                                    <tbody>
+                                        <tr>
+                                            <td ng-repeat="displayedNumber in displayedNumbers" align="center" style="padding: 8px 0 !important;"><div class="number super-border mn-width" ng-model="displayedCombination[displayedNumber]" style="width:55px; height:55px; padding:14px; background-color:black; color:white;" ng-class="{'btn-primary' : $index == 6}" ng-click="Clear(displayedNumber);"><label>{{displayedCombination[displayedNumber]}}</label></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="text-center jpn-text">
+                                    <h3><b>７つの数字を選んでください！</b></h3>
+                                </div>
+                                <table class="table bg-color gold" align="center" width="70%">
+                                    <tbody id="tbody">
+                                        <tr ng-repeat="combinationRow in combinationRows">
+                                            <td ng-repeat="number in numbers | slice: multiplier(combinationRow) : multiplier((combinationRow + 1))" style="padding: 8px 0 !important;" align="center">
+                                                <div class="number" ng-class='{"btn-primary" : isLast(number), "text-inverse": isSelected(number) && !isLast(number), "btn-default" : isSelected(number) && !isLast(number), "bg-color black" : !isSelected(number)}' ng-click="Select(number);" ng-disabled="isPlayed">
+                                                    <label>{{number}}</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 jpn-text" style="margin-top: 0;">
+                        <div style="border-top: 3px solid #FFFFFF !important;background-color:#B9B7A8" class="card bg-color">
+                            <div class="text-center row quick-btn">
+                                <div class="col-xs-6">
+                                    <button ng-click="clearPicks();" style="background-color:#4C4A40 !important;border:2px solid white !important" class="btn btn-warning round-edge" ng-disabled="isPlayed">クリア</button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button ng-click="quickPicks();" style="background-color:#4C4A40 !important;border:2px solid white !important" class="btn btn-info round-edge" ng-disabled="isPlayed">クイック・ピック</button>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col-xs-8 col-xs-offset-2">
+                                    <button style="background-color:#A29B73 !important;border:2px solid white !important" class="btn btn-block btn-success text-center round-edge" ng-click="play()" ng-disabled="isPlayed">
+                                        <p class="h2" style="margin: 10px 0;"><strong>PLAY</strong></p>
+                                    </button>
+                                    <!--<a role="button" style="width:100%;border-radius:0;height:100px;" class="btn btn-lg " ng-click="play()" ng-disabled="hasPlayed"><h1>Play Now for Free!</h1></a>-->
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <!--<div class="excess"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="DrawCtrl" class="draw-bg" id="waiting" style="background-color: rgba(0, 0, 0, 0.9);display:none;z-index:500;position:fixed;width:100%;height:100%;top:0;right:0;padding-top:100px;">
+    <div style="background-color:transparent;" class="body-content container">
+        <div class="row" style="margin-top: -50px;">
+            <div ng-hide="isDrawDone" class="col-md-12">
+                <h3 style="color:white;text-align:center">Sweepstakes draw will start in:</h3>
+            </div>
+            <div ng-hide="isDrawDone" style="position:relative" class="col-md-12">
+                <div style="position:absolute;left:50%;margin-left:-80px">
+                    <div class="draw-hours">
+                        <div class="circle-num bg-color black text-white" style="border: 2px solid;" id="backMinutes"><b></b></div>
+                        <div class="text-center"><b>MIN</b></div>
+                    </div>
+                    <div class="draw-hours">
+                        <div class="circle-num bg-color black text-white" style="border: 2px solid;" id="backSeconds"><b></b></div>
+                        <div class="text-center"><b>SEC</b></div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <table style="background-color:transparent; border:none; margin: auto; margin-top:100px;" class="table table-bordered draw-lg visible-lg">
+                <tbody>
+                    <tr class="goodluck-wrapper">
+                        <td class="no-border" ng-repeat="number in winningCombinations | limitTo: 7 track by $index">
+                            <div class="goodluck-num border" style="color: white; background-color: black;" ng-class="{'btn-primary':$last}">
+                                <h1>{{number}}</h1>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="background-color:transparent; border:none; width: 80%; margin: auto; margin-top:100px;" class="table draw-md visible-md visible-sm">
+                <tbody>
+                    <tr>
+                        <td ng-repeat="number in winningCombinations | limitTo: 7 track by $index" style="border:none;"><div class="number super-border" style="width:70px; height:70px; padding-left:8px; padding-right: 8px; padding: auto; background-color:black; color:white; margin: auto; cursor:default;" ng-class="{'btn-primary' : $index == 6}"><label style="font-size: 36px;">{{number}}</label></div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table style="background-color:transparent; border:none; margin: auto; margin-top:100px;" class="table draw-md visible-xs">
+                <tbody>
+                    <tr>
+                        <td ng-repeat="number in winningCombinations | limitTo: 7 track by $index" style="border:none;"><div class="number super-border" style="width:55px; height:55px; padding-left:8px; padding-right: 8px; padding: auto; background-color:black; color:white; margin: auto; cursor:default;" ng-class="{'btn-primary' : $index == 6}"><label style="font-size: 28px;">{{number}}</label></div></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br />
+            <div class="text-center">
+                <button class="btn btn-success bg-color green" style="padding: 0 50px;" ng-click="doneRaffle()" ng-show="isDrawDone"><h1 style="margin-bottom: 20px;">HOME</h1></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function ($) {
+        //open the lateral panel
+        $('.cd-btn').on('click', function (event) {
+            event.preventDefault();
+            $('.cd-panel').addClass('is-visible');
+        });
+        //clode the lateral panel
+        $('.cd-panel').on('click', function (event) {
+            if ($(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close')) {
+                $('.cd-panel').removeClass('is-visible');
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+<script>
+    $("[data-toggle=popover]").popover();
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 6000
+        });
+
+        $('.carousel').carousel('cycle');
+    });
+</script>  
+
+<script>$(function () { var i = $("[rel~=tooltip]"), t = !1, n = !1; i.bind("mouseenter", function () { var i, r; if (t = $(this), tip = t.attr("title"), n = $('<div id="tooltip"><\/div>'), !tip || tip == "") return !1; t.removeAttr("title"); n.css("opacity", 0).html(tip).appendTo("body"); i = function () { var i, r; $(window).width() < n.outerWidth() * 1.5 ? n.css("max-width", $(window).width() / 2) : n.css("max-width", 340); i = t.offset().left + t.outerWidth() / 2 - n.outerWidth() / 2; r = t.offset().top - n.outerHeight() - 20; i < 0 ? (i = t.offset().left + t.outerWidth() / 2 - 20, n.addClass("left")) : n.removeClass("left"); i + n.outerWidth() > $(window).width() ? (i = t.offset().left - n.outerWidth() + t.outerWidth() / 2 + 20, n.addClass("right")) : n.removeClass("right"); r < 0 ? (r = t.offset().top + t.outerHeight(), n.addClass("top")) : n.removeClass("top"); n.css({ left: i, top: r }).animate({ top: "+=10", opacity: 1 }, 50) }; i(); $(window).resize(i); r = function () { n.animate({ top: "-=10", opacity: 0 }, 50, function () { $(this).remove() }); t.attr("title", tip) }; t.bind("mouseleave", r); n.bind("click", r) }) });</script>
